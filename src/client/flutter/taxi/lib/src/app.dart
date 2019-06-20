@@ -29,15 +29,12 @@ class _AppState extends State<App> {
       switch (_selectedIndex) {
         case 0:
           title = 'Accueil';
-          print('Accueil');
           break;
         case 1:
           title = 'Calculateur';
-          print('Calculateur');
           break;
         case 2:
           title = 'Création de compte';
-          print('Création de compte');
           break;
       }
     });

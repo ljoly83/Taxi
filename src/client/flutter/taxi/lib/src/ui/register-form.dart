@@ -75,6 +75,7 @@ class _RegisterFormState extends State<RegisterForm> {
                                     labelText: 'Email',
                                     labelStyle:
                                         Theme.of(context).textTheme.display2),
+                                keyboardType: TextInputType.emailAddress,
                                 onSaved: (val) =>
                                     setState(() => _user.email = val)),
                             TextFormField(
@@ -97,7 +98,7 @@ class _RegisterFormState extends State<RegisterForm> {
                                     labelText: 'Téléphone',
                                     labelStyle:
                                         Theme.of(context).textTheme.display2),
-                                keyboardType: TextInputType.number,
+                                keyboardType: TextInputType.phone,
                                 validator: (value) {
                                   if (value.isEmpty) {
                                     return 'Téléphone est obligatoire';
