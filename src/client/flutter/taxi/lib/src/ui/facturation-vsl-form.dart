@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FacturationForm extends StatelessWidget {
+class FacturationVSLForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTitle = 'Formulaire facturation';
@@ -9,7 +9,7 @@ class FacturationForm extends StatelessWidget {
       title: appTitle,
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: TaxiCustomForm(),
+        body: AmbulanceForm(),
       ),
     );
   }
@@ -17,16 +17,16 @@ class FacturationForm extends StatelessWidget {
 
 
 // Create a Form widget.
-class TaxiCustomForm extends StatefulWidget {
+class AmbulanceForm extends StatefulWidget {
   @override
-  TaxiCustomFormState createState() {
-    return TaxiCustomFormState();
+  AmbulanceFormState createState() {
+    return AmbulanceFormState();
   }
 }
 
 // Create a corresponding State class.
 // This class holds data related to the form.
-class TaxiCustomFormState extends State<TaxiCustomForm> {
+class AmbulanceFormState extends State<AmbulanceForm> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
