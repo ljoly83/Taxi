@@ -52,7 +52,9 @@ class _HomeState extends State<Home> {
           width: double.infinity,
           height: 100,
           child: Container(
+            alignment: Alignment.center,
             color: Colors.amberAccent,
+            child: Text('Publicité'),
           ),
         )
       ],
