@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ui/home.dart';
 import 'ui/register-form.dart';
-import 'ui/facturation-form.dart';
+import 'ui/facturation.dart';
 
 class App extends StatefulWidget {
   //App({Key key, this.title}) : super(key: key);
@@ -18,7 +18,7 @@ class _AppState extends State<App> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _children = [
     Home(),
-    FacturationForm(),
+    Facturation(),
     RegisterForm()
   ];
 
