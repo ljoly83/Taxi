@@ -40,7 +40,7 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        loadChildren: '../simulator/settings/settings.module#VslPageModule'
+        loadChildren: '../simulator/settings/settings.module#SettingsPageModule'
       },
       {
         path: 'register',
@@ -53,7 +53,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
