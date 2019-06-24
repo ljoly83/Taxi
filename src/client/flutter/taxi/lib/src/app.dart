@@ -36,7 +36,7 @@ class _AppState extends State<App> {
           title = 'Accueil';
           break;
         case 1:
-          title = 'Calculateur';
+          title = 'Simulateur';
           break;
         case 2:
           title = 'Paramètres';
@@ -90,7 +90,7 @@ class _AppState extends State<App> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.receipt),
-                title: Text('Facturation'),
+                title: Text('Simulateur'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.build),

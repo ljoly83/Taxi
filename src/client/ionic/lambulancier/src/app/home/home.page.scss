@@ -1,0 +1,27 @@
+//ion-img {
+//    width: 100;
+//    height: 100;
+//}
+
+.item1{ background-color: Crimson; padding: 20px; flex: flex-grow ;}
+.item2{ background-color: LightGreen; padding: 20px; }
+.item3{ background-color: DarkTurquoise; padding: 20px; }
+
+/*Displaying items in a column*/
+.flexcontainer{
+    background-color: #E0E0E0;
+    padding: 20px;
+    margin-top: 50px;
+   
+    display: -webkit-flex; /*Setting the container to flex */
+    display: flex;
+   
+    -webkit-flex-direction: column; /*sets it to be in a column*/
+    flex-direction: column;
+   
+    -webkit-justify-content: flex-around;
+    justify-content: flex-around;
+
+
+ }
+ 

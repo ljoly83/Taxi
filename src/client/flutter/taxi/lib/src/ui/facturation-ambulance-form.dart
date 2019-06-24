@@ -64,7 +64,8 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 RadioButtonGroup(
-                                  orientation: GroupedButtonsOrientation.HORIZONTAL,
+                                  orientation:
+                                      GroupedButtonsOrientation.HORIZONTAL,
                                   margin: const EdgeInsets.only(left: 20.0),
                                   labels: <String>["Jour", "Nuit", "Férié"],
                                   onChange: (String label, int index) =>
@@ -77,13 +78,15 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 CheckboxGroup(
-                                  orientation: GroupedButtonsOrientation.HORIZONTAL,
+                                  orientation:
+                                      GroupedButtonsOrientation.HORIZONTAL,
                                   labels: <String>[
                                     "Aéroport",
                                     "SMUR",
                                     "Préma",
                                   ],
-                                  onChange: (bool isChecked, String label, int index) =>
+                                  onChange: (bool isChecked, String label,
+                                          int index) =>
                                       print(
                                           "isChecked: $isChecked   label: $label  index: $index"),
                                   onSelected: (List<String> checked) =>
@@ -95,12 +98,14 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 CheckboxGroup(
-                                  orientation: GroupedButtonsOrientation.HORIZONTAL,
+                                  orientation:
+                                      GroupedButtonsOrientation.HORIZONTAL,
                                   labels: <String>[
                                     "Garde centre 15",
                                     "Aller/Retour",
                                   ],
-                                  onChange: (bool isChecked, String label, int index) =>
+                                  onChange: (bool isChecked, String label,
+                                          int index) =>
                                       print(
                                           "isChecked: $isChecked   label: $label  index: $index"),
                                   onSelected: (List<String> checked) =>
@@ -112,93 +117,144 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 RadioButtonGroup(
-                                  orientation: GroupedButtonsOrientation.HORIZONTAL,
+                                  orientation:
+                                      GroupedButtonsOrientation.HORIZONTAL,
                                   margin: const EdgeInsets.only(left: 20.0),
-                                  labels: <String>["Départ", "Agglo", "Prise Ch."],
+                                  labels: <String>[
+                                    "Départ",
+                                    "Agglo",
+                                    "Prise Ch."
+                                  ],
                                   onChange: (String label, int index) =>
                                       print("label: $label index: $index"),
                                   onSelected: (String label) => print(label),
                                 ),
                               ],
                             ),
-                            TextFormField(
-                              style: TextStyle(color: Colors.black),
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  labelText: 'Kms',
-                                  labelStyle: _style),
-                              onSaved: (val) =>
-                                  setState(() => _ambulance.kms = int.parse(val)),
+                            Row(
+                              children: <Widget>[
+                                Flexible(
+                                    // Flexible is need for TextFormField to be rendered
+                                    child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: TextFormField(
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            labelText: 'Kms',
+                                            labelStyle: _style),
+                                        onSaved: (val) => setState(() =>
+                                            _ambulance.kms = int.parse(val)),
+                                      ),
+                                    )
+                                    //container
+                                  ],
+                                ))
+                              ],
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
                             TextFormField(
                               style: TextStyle(color: Colors.black),
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                  labelText: 'Péage',
-                                  labelStyle: _style),
-                              onSaved: (val) =>
-                                  setState(() => _ambulance.peage = int.parse(val)),
+                                  labelText: 'Péage', labelStyle: _style),
+                              onSaved: (val) => setState(
+                                  () => _ambulance.peage = int.parse(val)),
                             ),
                             TextFormField(
                               style: TextStyle(color: Colors.black),
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                  labelText: 'Suppléments',
-                                  labelStyle: _style),
-                              onSaved: (val) =>
-                                  setState(() => _ambulance.supplements = int.parse(val)),
+                                  labelText: 'Suppléments', labelStyle: _style),
+                              onSaved: (val) => setState(() =>
+                                  _ambulance.supplements = int.parse(val)),
                             ),
-
-//                      Row(
-//                          mainAxisAlignment: MainAxisAlignment.center,
-//                          children: <Widget>[
-//
-//                            Column(
-//                              crossAxisAlignment: CrossAxisAlignment.stretch,
-//                              children: [
-
-                                        TextFormField(
-                                          style: TextStyle(color: Colors.black),
-                                          keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
-                                              labelText: 'Part RO',
-                                              labelStyle: _style),
-                                          onSaved: (val) =>
-                                              setState(() => _ambulance.partRo = int.parse(val)),
-                                        ),
-
-
-
-
-                                        TextFormField(
-                                          style: TextStyle(color: Colors.black),
-                                          keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
-                                              labelText: 'Part RC',
-                                              labelStyle: _style),
-                                          onSaved: (val) =>
-                                              setState(() => _ambulance.partRC = int.parse(val)),
-                                        ),
-
-//                              ],
-//                            ),
-//
-//                          ],
-//                      ),
-
+                            Row(
+                              children: <Widget>[
+                                Flexible(
+                                    // Flexible is need for TextFormField to be rendered
+                                    child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: TextFormField(
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            labelText: 'Part RO',
+                                            labelStyle: _style),
+                                        onSaved: (val) => setState(() =>
+                                            _ambulance.partRo = int.parse(val)),
+                                      ),
+                                    )
+                                    //container
+                                  ],
+                                )),
+                                Flexible(
+                                    // Flexible is need for TextFormField to be rendered
+                                    child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: TextFormField(
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            labelText: 'Part RC',
+                                            labelStyle: _style),
+                                        onSaved: (val) => setState(() =>
+                                            _ambulance.partRC = int.parse(val)),
+                                      ),
+                                    )
+                                    //container
+                                  ],
+                                ))
+                              ],
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            ),
 
                             Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 16.0, horizontal: 16.0),
-                                child: RaisedButton(
-                                    onPressed: () {
-                                      final form = _formKey.currentState;
-                                      if (form.validate()) {
-                                        form.save();
-                                        _ambulance.save();
-                                      }
-                                    },
-                                    child: Text('Envoyer'))),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 16.0, horizontal: 0.0),
+                              child: Row(
+                                children: <Widget>[
+                                  Flexible(
+                                      // Flexible is need for TextFormField to be rendered
+                                      child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text("Total",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15 )),
+                                      )
+                                      //container
+                                    ],
+                                  )),
+                                  Flexible(
+                                      // Flexible is need for TextFormField to be rendered
+                                      child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text("69", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15 )),
+                                      )
+                                      //container
+                                    ],
+                                  )),
+                                  Icon(Icons.home),
+                                ],
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              ),
+                            ),
+
+//                            Container(
+//                                padding: const EdgeInsets.symmetric(
+//                                vertical: 16.0, horizontal: 16.0),
+//                                child: RaisedButton(
+//                                    onPressed: () {
+//                                      final form = _formKey.currentState;
+//                                      if (form.validate()) {
+//                                        form.save();
+//                                        _ambulance.save();
+//                                      }
+//                                    },
+//                                    child: Text('Envoyer'))),
                           ]))))
         ])));
   }
