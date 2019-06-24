@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'ui/home.dart';
 import 'ui/register-form.dart';
 import 'ui/facturation.dart';
+import 'ui/parameters-form.dart';
+import 'ui/MyDemo.dart';
 
 class App extends StatefulWidget {
   //App({Key key, this.title}) : super(key: key);
@@ -12,13 +14,16 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  String title = 'Accueil';
+  static String title = 'Accueil';
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  // TODO understand why BottomBar loose color after 3 max items.
+
   final List<Widget> _children = [
     Home(),
     Facturation(),
+    MyDemo(),
     RegisterForm()
   ];
 
@@ -34,6 +39,9 @@ class _AppState extends State<App> {
           title = 'Calculateur';
           break;
         case 2:
+          title = 'Paramètres';
+          break;
+        case 3:
           title = 'Création de compte';
           break;
       }
@@ -83,6 +91,10 @@ class _AppState extends State<App> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.receipt),
                 title: Text('Facturation'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.build),
+                title: Text('Paramètres'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.send),
