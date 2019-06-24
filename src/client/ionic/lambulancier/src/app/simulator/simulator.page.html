@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Simulateur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Segment with default selection -->
+  <ion-segment (ionChange)="segmentChanged($event)" value="ambulance">
+    <ion-segment-button value="ambulance" [routerLink]="['/tabs/simulator/ambulance']"
+      routerLinkActive="router-link-active">
+      <ion-label>Ambulance</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="vsl" [routerLink]="['/tabs/simulator/vsl']">
+      <ion-label>VSL</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="taxi" [routerLink]="['/tabs/simulator/taxi']">
+      <ion-label>Taxi</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+
+
+</ion-content>

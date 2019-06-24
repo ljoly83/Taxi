@@ -1,0 +1,7 @@
+{
+  "name": "lambulancier",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
