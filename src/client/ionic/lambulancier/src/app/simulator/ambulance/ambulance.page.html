@@ -1,7 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Facturation ambulance</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Facturation ambulance</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -11,27 +14,26 @@
 
 
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                        </div>
+                    <ion-item>
+                        <ion-label position="floating" color="primary">Username</ion-label>
+                        <ion-input type="text" formControlName="username" class="form-controll" required></ion-input>
+                    </ion-item>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validationMessages.username">
+                            <div class="error-message"
+                                *ngIf="registerForm.get('username').hasError(validation.type) && (registerForm.get('username').dirty || registerForm.get('username').touched)">
+                                {{ validation.message }}
+                            </div>
+                        </ng-container>
                     </div>
+
                     <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                        </div>
+                        <ion-button type="submit" class="btn btn-primary">Register</ion-button>
                     </div>
-                    <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">Register</button>
-                    </div>
-                 </form>
+                </form>
 
 
             </ion-content>
         </ion-row>
-      </ion-grid>
-  </ion-content>
+    </ion-grid>
+</ion-content>
