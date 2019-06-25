@@ -1,10 +1,15 @@
-ion-content{
-    --background: #fff url('/assets/ambulance-640×360.jpg') no-repeat center center / cover;
-    --padding-bottom: 10;	
-    --padding-left: 10;	
-    --padding-right: 10;	
-    --padding-top: 10;
-}
+:host {
+    ion-content {
+      --background:none;
+      background:url('/assets/ambulance-640×360.jpg');
+      background-size: cover;
+      background-position: center center;
+      --padding-bottom: 10;	
+      --padding-left: 10;	
+      --padding-right: 10;	
+      --padding-top: 10;
+    }
+  }
 
 ion-grid {
     height: 100%;
