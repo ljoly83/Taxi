@@ -3,7 +3,6 @@ import 'ui/home.dart';
 import 'ui/register-form.dart';
 import 'ui/facturation.dart';
 import 'ui/parameters-form.dart';
-import 'ui/MyDemo.dart';
 
 class App extends StatefulWidget {
   //App({Key key, this.title}) : super(key: key);
@@ -23,7 +22,7 @@ class _AppState extends State<App> {
   final List<Widget> _children = [
     Home(),
     Facturation(),
-    MyDemo(),
+    ParametersForm(),
     RegisterForm()
   ];
 

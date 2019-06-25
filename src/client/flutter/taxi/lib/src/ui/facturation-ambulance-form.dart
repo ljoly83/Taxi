@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//import 'package:grouped_buttons/grouped_buttons.dart';
 import '../util/checkbox_group.dart';
 import '../util/grouped_buttons_orientation.dart';
 import '../util/radio_button_group.dart';
@@ -178,6 +177,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                   children: <Widget>[
                                     Container(
                                       child: TextFormField(
+                                        initialValue: '65',
                                         style: TextStyle(color: Colors.black),
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
@@ -196,6 +196,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                   children: <Widget>[
                                     Container(
                                       child: TextFormField(
+                                        initialValue: '35',
                                         style: TextStyle(color: Colors.black),
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
@@ -232,12 +233,12 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                       child: Column(
                                     children: <Widget>[
                                       Container(
-                                        child: Text("69", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15 )),
+                                        child: Text("0", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15 )),
                                       )
                                       //container
                                     ],
                                   )),
-                                  Icon(Icons.home),
+                                  Icon(Icons.search),
                                 ],
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               ),
