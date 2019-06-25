@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-ambulance',
@@ -14,24 +14,24 @@ export class AmbulancePage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        username: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6)]]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
-}
+  }
 
-// convenience getter for easy access to form fields
-get f() { return this.registerForm.controls; }
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
 
-onSubmit() {
+  onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-        return;
+      return;
     }
 
-   }
+  }
 
 }
