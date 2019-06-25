@@ -46,9 +46,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
             child: Stack(children: <Widget>[
           Container(
               padding:
@@ -257,6 +255,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
 //                                    },
 //                                    child: Text('Envoyer'))),
                           ]))))
-        ])));
+        ]));
   }
 }

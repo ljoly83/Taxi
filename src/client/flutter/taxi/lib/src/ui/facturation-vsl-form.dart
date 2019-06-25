@@ -47,9 +47,7 @@ class VSLFormState extends State<VSLForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
             child: Stack(children: <Widget>[
           Container(
               padding:
@@ -252,6 +250,6 @@ class VSLFormState extends State<VSLForm> {
 //                                    },
 //                                    child: Text('Envoyer'))),
                           ]))))
-        ])));
+        ]));
   }
 }

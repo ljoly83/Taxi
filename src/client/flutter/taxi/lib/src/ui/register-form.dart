@@ -18,7 +18,7 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Stack(children: <Widget>[
           Container(
               padding:
-                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
               child: Builder(
                   builder: (context) => Form(
                       key: _formKey,

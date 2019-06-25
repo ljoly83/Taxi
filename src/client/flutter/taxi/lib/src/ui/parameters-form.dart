@@ -48,9 +48,7 @@ class ParamsFormState extends State<ParamsForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
             child: Stack(children: <Widget>[
               Container(
                   padding:
@@ -153,6 +151,6 @@ class ParamsFormState extends State<ParamsForm> {
                               ])
                       )
                   ))
-            ])));
+            ]));
   }
 }

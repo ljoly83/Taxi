@@ -13,51 +13,65 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called
-
-    return Column(
-      children: <Widget>[
-        Expanded(
-            flex: 1,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return new Scaffold(
+        body: new Stack(
+          children: <Widget>[
+            new Container(
+              decoration: new BoxDecoration(
+                image: new DecorationImage(image: new AssetImage("assets/ambulance-192x108.png"), fit: BoxFit.cover,),
+              ),
+            ),
+            new Center(
+              child: Column(
                 children: <Widget>[
-                  Image.asset(
-                    'assets/aidesnsoft-logom.png',
-                    width: 248.0,
-                    height: 56.0,
-                    fit: BoxFit.cover,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
+                  Expanded(
+                    flex: 1,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          'Solutions pour Transporteur Sanitaires:',
-                          style: Theme.of(context).textTheme.display1,
+                        Image.asset(
+                          'assets/aidesnsoft-logom.png',
+                          width: 248.0,
+                          height: 56.0,
+                          fit: BoxFit.cover,
                         ),
-                        Text(
-                          'Facturation, Régulation, Géolocalisation, Services PEC+ gratuit',
-                          style: Theme.of(context).textTheme.display1,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 50, 20, 50),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                'Solutions pour Transporteur Sanitaires:',
+                                style: Theme.of(context).textTheme.display1,
+                              ),
+                              Text(
+                                'Facturation, Régulation, Géolocalisation, Services PEC+ gratuit',
+                                style: Theme.of(context).textTheme.display1,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 100,
+                    child: Container(
+                      alignment: Alignment.center,
+                      color: Colors.amberAccent,
+                      child: Text('Publicité'),
+                    ),
+                  )
                 ],
               ),
-            ),
-        SizedBox(
-          width: double.infinity,
-          height: 100,
-          child: Container(
-            alignment: Alignment.center,
-            color: Colors.amberAccent,
-            child: Text('Publicité'),
-          ),
+            )
+          ],
         )
-      ],
     );
   }
+
 }
