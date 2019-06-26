@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../util/checkbox_group.dart';
 import '../util/grouped_buttons_orientation.dart';
 import '../util/radio_button_group.dart';
 import '../models/parameters.dart';
