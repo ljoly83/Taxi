@@ -13,9 +13,7 @@ class Facturation extends StatefulWidget {
   @override
   _FacturationState createState() => _FacturationState();
 
-  //TODO Set the title (via app.dart) with VSL, Ambulance, taxi as the icon are not enough explicit
 }
-// TODO Try to remove Material app with the code of Mydemo.dart.
 
 class _FacturationState extends State<Facturation> {
   final Map<int, Widget> logoWidgets = const <int, Widget>{
