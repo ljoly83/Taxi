@@ -38,8 +38,6 @@ class ParamsFormState extends State<ParamsForm> {
 
   final _param = Parameters();
 
-  var _selectedYearValue = "2015";
-
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
   TextStyle _style =
@@ -67,17 +65,13 @@ class ParamsFormState extends State<ParamsForm> {
                                 ),
 
                                 DropdownButton<String>(
-                                  value: _selectedYearValue,
+                                  value: _param.year,
                                   onChanged: (String newValue) {
                                     setState(() {
-                                      _selectedYearValue = newValue;
+                                      _param.year = newValue;
                                     });
                                   },
-                                  items: <String>[
-                                    '2015',
-                                    '2013',
-                                    '2012'
-                                  ].map<DropdownMenuItem<String>>((String value) {
+                                  items: _param.yearList.map<DropdownMenuItem<String>>((String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Text(value),
@@ -90,13 +84,16 @@ class ParamsFormState extends State<ParamsForm> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     RadioButtonGroup(
+                                      picked: _param.zone,
                                       orientation:
                                       GroupedButtonsOrientation.VERTICAL,
                                       margin: const EdgeInsets.only(left: 20.0),
-                                      labels: <String>["Zone A - 13,85 €", "Zone B - 13,45 €", "Zone C - 12,60 €", "Zone D - 11,97 €"],
+                                      labels: _param.zoneList,
                                       onChange: (String label, int index) =>
                                           print("label: $label index: $index"),
-                                      onSelected: (String label) => print(label),
+                                        onSelected: (String label) => setState((){
+                                          _param.zone = label;
+                                        })
                                     ),
                                   ],
                                 ),
@@ -109,11 +106,11 @@ class ParamsFormState extends State<ParamsForm> {
                                           children: <Widget>[
                                             Container(
                                               child: TextFormField(
-                                                initialValue: '65',
+                                                initialValue: _param.partRo.toString(),
                                                 style: TextStyle(color: Colors.black),
                                                 keyboardType: TextInputType.number,
                                                 decoration: InputDecoration(
-                                                    labelText: 'Part RO',
+                                                    labelText: 'Part RO (%)',
                                                     labelStyle: _style),
                                                 onSaved: (val) => setState(() =>
                                                 _param.partRo = int.parse(val)),
@@ -128,11 +125,11 @@ class ParamsFormState extends State<ParamsForm> {
                                           children: <Widget>[
                                             Container(
                                               child: TextFormField(
-                                                initialValue: '35',
+                                                initialValue: _param.partRc.toString(),
                                                 style: TextStyle(color: Colors.black),
                                                 keyboardType: TextInputType.number,
                                                 decoration: InputDecoration(
-                                                    labelText: 'Part RC',
+                                                    labelText: 'Part RC (%)',
                                                     labelStyle: _style),
                                                 onSaved: (val) => setState(() =>
                                                 _param.partRc = int.parse(val)),

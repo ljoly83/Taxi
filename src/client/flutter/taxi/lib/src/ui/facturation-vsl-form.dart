@@ -4,6 +4,7 @@ import '../util/checkbox_group.dart';
 import '../util/grouped_buttons_orientation.dart';
 import '../util/radio_button_group.dart';
 import '../models/vsl.dart';
+import '../models/parameters.dart';
 
 class FacturationVSLForm extends StatelessWidget {
   @override
@@ -39,6 +40,7 @@ class VSLFormState extends State<VSLForm> {
   final _formKey = GlobalKey<FormState>();
 
   final _vsl = VSL();
+  final _param = Parameters();
 
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
@@ -48,194 +50,192 @@ class VSLFormState extends State<VSLForm> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-            child: Stack(children: <Widget>[
-          Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
-              child: Builder(
-                  builder: (context) => Form(
-                      key: _formKey,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                RadioButtonGroup(
-                                  orientation:
-                                      GroupedButtonsOrientation.HORIZONTAL,
-                                  margin: const EdgeInsets.only(left: 20.0),
-                                  labels: <String>["Jour", "Nuit", "Férié"],
-                                  onChange: (String label, int index) =>
-                                      print("label: $label index: $index"),
-                                  onSelected: (String label) => print(label),
-                                ),
+        child: Stack(children: <Widget>[
+      Container(
+          padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+          child: Builder(
+              builder: (context) => Form(
+                  key: _formKey,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RadioButtonGroup(
+                              picked: _vsl.day,
+                              orientation: GroupedButtonsOrientation.HORIZONTAL,
+                              margin: const EdgeInsets.only(left: 20.0),
+                              labels: _vsl.dayList,
+                              onChange: (String label, int index) =>
+                                  _vsl.setSelectedDay(index),
+                              onSelected: (String label) => setState((){
+                                _vsl.day = label;
+                              }),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            CheckboxGroup(
+                              orientation: GroupedButtonsOrientation.HORIZONTAL,
+                              labels: <String>[
+                                "Aéroport",
+                                "Aller/Retour",
                               ],
+                              onChange: (bool isChecked, String label,
+                                      int index) =>
+                                  print(
+                                      "isChecked: $isChecked   label: $label  index: $index"),
+                              onSelected: (List<String> checked) =>
+                                  print("checked: ${checked.toString()}"),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RadioButtonGroup(
+                              picked: _vsl.flatRate,
+                              orientation: GroupedButtonsOrientation.HORIZONTAL,
+                              margin: const EdgeInsets.only(left: 20.0),
+                              labels: _vsl.flatRateList,
+                              onChange: (String label, int index) =>
+                              _vsl.setSelectedFlatRate(index),
+                              onSelected: (String label) => setState((){
+                                _vsl.flatRate = label;
+                              }),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Flexible(
+                                // Flexible is need for TextFormField to be rendered
+                                child: Column(
                               children: <Widget>[
-                                CheckboxGroup(
-                                  orientation:
-                                      GroupedButtonsOrientation.HORIZONTAL,
-                                  labels: <String>[
-                                    "Aéroport",
-                                    "Aller/Retour",
-                                  ],
-                                  onChange: (bool isChecked, String label,
-                                          int index) =>
-                                      print(
-                                          "isChecked: $isChecked   label: $label  index: $index"),
-                                  onSelected: (List<String> checked) =>
-                                      print("checked: ${checked.toString()}"),
-                                ),
+                                Container(
+                                  child: TextFormField(
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Kms', labelStyle: _style),
+                                    onSaved: (val) => setState(
+                                        () => _vsl.kms = int.parse(val)),
+                                  ),
+                                )
+                                //container
                               ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            ))
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ),
+                        TextFormField(
+                          style: TextStyle(color: Colors.black),
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              labelText: 'Péage', labelStyle: _style),
+                          onSaved: (val) =>
+                              setState(() => _vsl.peage = int.parse(val)),
+                        ),
+                        TextFormField(
+                          style: TextStyle(color: Colors.black),
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              labelText: 'Suppléments', labelStyle: _style),
+                          onSaved: (val) =>
+                              setState(() => _vsl.supplements = int.parse(val)),
+                        ),
+                        TextFormField(
+                          style: TextStyle(color: Colors.black),
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              labelText: 'Nb. de personnes',
+                              labelStyle: _style),
+                          onSaved: (val) =>
+                              setState(() => _vsl.supplements = int.parse(val)),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Flexible(
+                                // Flexible is need for TextFormField to be rendered
+                                child: Column(
                               children: <Widget>[
-                                RadioButtonGroup(
-                                  orientation:
-                                      GroupedButtonsOrientation.HORIZONTAL,
-                                  margin: const EdgeInsets.only(left: 20.0),
-                                  labels: <String>[
-                                    "Départ",
-                                    "Prise Charge"
-                                  ],
-                                  onChange: (String label, int index) =>
-                                      print("label: $label index: $index"),
-                                  onSelected: (String label) => print(label),
-                                ),
+                                Container(
+                                  child: TextFormField(
+                                    initialValue: _param.partRo.toString(),
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Part RO',
+                                        labelStyle: _style),
+                                    onSaved: (val) => setState(
+                                        () => _vsl.partRo = int.parse(val)),
+                                  ),
+                                )
+                                //container
                               ],
-                            ),
-                            Row(
+                            )),
+                            Flexible(
+                                // Flexible is need for TextFormField to be rendered
+                                child: Column(
                               children: <Widget>[
-                                Flexible(
-                                    // Flexible is need for TextFormField to be rendered
-                                    child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextFormField(
-                                        style: TextStyle(color: Colors.black),
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Kms',
-                                            labelStyle: _style),
-                                        onSaved: (val) => setState(
-                                            () => _vsl.kms = int.parse(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                ))
+                                Container(
+                                  child: TextFormField(
+                                    style: TextStyle(color: Colors.black),
+                                    initialValue: _param.partRc.toString(),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Part RC',
+                                        labelStyle: _style),
+                                    onSaved: (val) => setState(
+                                        () => _vsl.partRC = int.parse(val)),
+                                  ),
+                                )
+                                //container
                               ],
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            ),
-                            TextFormField(
-                              style: TextStyle(color: Colors.black),
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  labelText: 'Péage', labelStyle: _style),
-                              onSaved: (val) =>
-                                  setState(() => _vsl.peage = int.parse(val)),
-                            ),
-                            TextFormField(
-                              style: TextStyle(color: Colors.black),
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  labelText: 'Suppléments', labelStyle: _style),
-                              onSaved: (val) => setState(
-                                  () => _vsl.supplements = int.parse(val)),
-                            ),
-                            TextFormField(
-                              style: TextStyle(color: Colors.black),
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  labelText: 'Nb. de personnes', labelStyle: _style),
-                              onSaved: (val) => setState(
-                                      () => _vsl.supplements = int.parse(val)),
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                    // Flexible is need for TextFormField to be rendered
-                                    child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextFormField(
-                                        initialValue: '65',
-                                        style: TextStyle(color: Colors.black),
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Part RO',
-                                            labelStyle: _style),
-                                        onSaved: (val) => setState(
-                                            () => _vsl.partRo = int.parse(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                )),
-                                Flexible(
-                                    // Flexible is need for TextFormField to be rendered
-                                    child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextFormField(
-                                        style: TextStyle(color: Colors.black),
-                                        initialValue: '35',
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Part RC',
-                                            labelStyle: _style),
-                                        onSaved: (val) => setState(
-                                            () => _vsl.partRC = int.parse(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                ))
-                              ],
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            ),
+                            ))
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ),
 
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16.0, horizontal: 0.0),
-                              child: Row(
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 16.0, horizontal: 0.0),
+                          child: Row(
+                            children: <Widget>[
+                              Flexible(
+                                  // Flexible is need for TextFormField to be rendered
+                                  child: Column(
                                 children: <Widget>[
-                                  Flexible(
-                                      // Flexible is need for TextFormField to be rendered
-                                      child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text("Total",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15)),
-                                      )
-                                      //container
-                                    ],
-                                  )),
-                                  Flexible(
-                                      // Flexible is need for TextFormField to be rendered
-                                      child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text("0",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15)),
-                                      )
-                                      //container
-                                    ],
-                                  )),
-                                  Icon(Icons.home),
+                                  Container(
+                                    child: Text("Total",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15)),
+                                  )
+                                  //container
                                 ],
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                              ),
-                            ),
+                              )),
+                              Flexible(
+                                  // Flexible is need for TextFormField to be rendered
+                                  child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    child: Text("0",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15)),
+                                  )
+                                  //container
+                                ],
+                              )),
+                              Icon(Icons.search),
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          ),
+                        ),
 
 //                            Container(
 //                                padding: const EdgeInsets.symmetric(
@@ -249,7 +249,7 @@ class VSLFormState extends State<VSLForm> {
 //                                      }
 //                                    },
 //                                    child: Text('Envoyer'))),
-                          ]))))
-        ]));
+                      ]))))
+    ]));
   }
 }
