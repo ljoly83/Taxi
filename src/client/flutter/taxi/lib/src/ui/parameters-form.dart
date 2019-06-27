@@ -41,112 +41,98 @@ class ParamsFormState extends State<ParamsForm> {
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
   TextStyle _style =
-  TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
+      TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-            child: Stack(children: <Widget>[
-              Container(
-                  padding:
-                  const EdgeInsets.symmetric(vertical: 60.0, horizontal: 16.0),
-                  child: Builder(
-                      builder: (context) => Form(
-                          key: _formKey,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text("Choix du tarif")
-                                  ],
-                                ),
-
-                                DropdownButton<String>(
-                                  value: _param.year,
-                                  onChanged: (String newValue) {
-                                    setState(() {
-                                      _param.year = newValue;
-                                    });
-                                  },
-                                  items: _param.yearList.map<DropdownMenuItem<String>>((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                ),
-
-
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    RadioButtonGroup(
-                                      picked: _param.zone,
-                                      orientation:
-                                      GroupedButtonsOrientation.VERTICAL,
-                                      margin: const EdgeInsets.only(left: 20.0),
-                                      labels: _param.zoneList,
-                                      onChange: (String label, int index) =>
-                                          print("label: $label index: $index"),
-                                        onSelected: (String label) => setState((){
-                                          _param.zone = label;
-                                        })
-                                    ),
-                                  ],
-                                ),
-
-                                Row(
-                                  children: <Widget>[
-                                    Flexible(
-                                      // Flexible is need for TextFormField to be rendered
-                                        child: Column(
-                                          children: <Widget>[
-                                            Container(
-                                              child: TextFormField(
-                                                initialValue: _param.partRo.toString(),
-                                                style: TextStyle(color: Colors.black),
-                                                keyboardType: TextInputType.number,
-                                                decoration: InputDecoration(
-                                                    labelText: 'Part RO (%)',
-                                                    labelStyle: _style),
-                                                onSaved: (val) => setState(() =>
-                                                _param.partRo = int.parse(val)),
-                                              ),
-                                            )
-                                            //container
-                                          ],
-                                        )),
-                                    Flexible(
-                                      // Flexible is need for TextFormField to be rendered
-                                        child: Column(
-                                          children: <Widget>[
-                                            Container(
-                                              child: TextFormField(
-                                                initialValue: _param.partRc.toString(),
-                                                style: TextStyle(color: Colors.black),
-                                                keyboardType: TextInputType.number,
-                                                decoration: InputDecoration(
-                                                    labelText: 'Part RC (%)',
-                                                    labelStyle: _style),
-                                                onSaved: (val) => setState(() =>
-                                                _param.partRc = int.parse(val)),
-                                              ),
-                                            )
-                                            //container
-                                          ],
-                                        ))
-                                  ],
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                ),
-
-
-
-                              ])
-                      )
-                  ))
-            ]));
+        child: Stack(children: <Widget>[
+      Container(
+          padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 16.0),
+          child: Builder(
+              builder: (context) => Form(
+                  key: _formKey,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[Text("Choix du tarif")],
+                        ),
+                        DropdownButton<String>(
+                          value: _param.year,
+                          onChanged: (String newValue) {
+                            setState(() {
+                              _param.year = newValue;
+                            });
+                          },
+                          items: _param.yearList
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RadioButtonGroup(
+                                picked: _param.zone,
+                                orientation: GroupedButtonsOrientation.VERTICAL,
+                                margin: const EdgeInsets.only(left: 20.0),
+                                labels: _param.zoneList,
+                                onChange: (String label, int index) =>
+                                    print("label: $label index: $index"),
+                                onSelected: (String label) => setState(() {
+                                      _param.zone = label;
+                                    })),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Flexible(
+                                // Flexible is need for TextFormField to be rendered
+                                child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: TextFormField(
+                                    initialValue: _param.partRo.toString(),
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Part RO (%)',
+                                        labelStyle: _style),
+                                    onSaved: (val) => setState(
+                                        () => _param.partRo = int.parse(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            )),
+                            Flexible(
+                                // Flexible is need for TextFormField to be rendered
+                                child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: TextFormField(
+                                    initialValue: _param.partRc.toString(),
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Part RC (%)',
+                                        labelStyle: _style),
+                                    onSaved: (val) => setState(
+                                        () => _param.partRc = int.parse(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            ))
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ),
+                      ]))))
+    ]));
   }
 }

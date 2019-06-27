@@ -28,14 +28,7 @@ class AmbulanceForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class AmbulanceFormState extends State<AmbulanceForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
 
   final _ambulance = Ambulance();
@@ -62,16 +55,15 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RadioButtonGroup(
-                              picked: _ambulance.day,
-                              orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              margin: const EdgeInsets.only(left: 20.0),
-                              labels: _ambulance.dayList,
-                              onChange: (String label, int index) =>
-                                  _ambulance.setSelectedDay(index),
-                              onSelected: (String label) => setState(() {
-                                    _ambulance.day = label;
-                                  }),
-                            ),
+                                picked: _ambulance.day,
+                                orientation: GroupedButtonsOrientation.HORIZONTAL,
+                                margin: const EdgeInsets.only(left: 20.0),
+                                labels: _ambulance.dayList,
+                                onChange: (String label, int index) =>
+                                    _ambulance.setSelectedDay(index),
+                                onSelected: (String label) => setState(() {
+                                  _ambulance.day = label;
+                                })),
                           ],
                         ),
                         Row(
@@ -91,24 +83,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                             ),
                           ],
                         ),
-//                        Row(
-//                          mainAxisAlignment: MainAxisAlignment.center,
-//                          children: <Widget>[
-//                            CheckboxGroup(
-//                              orientation: GroupedButtonsOrientation.HORIZONTAL,
-//                              labels: <String>[
-//                                "Garde centre 15",
-//                                "Aller/Retour",
-//                              ],
-//                              onChange: (bool isChecked, String label,
-//                                      int index) =>
-//                                  print(
-//                                      "isChecked: $isChecked   label: $label  index: $index"),
-//                              onSelected: (List<String> checked) =>
-//                                  print("checked: ${checked.toString()}"),
-//                            ),
-//                          ],
-//                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
