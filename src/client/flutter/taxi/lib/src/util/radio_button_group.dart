@@ -136,7 +136,9 @@ class _RadioButtonGroupState extends State<RadioButtonGroup> {
         }else{ //horizontal orientation means Row with Column inside
 
           // Library modification
-          content.add(Row(children: <Widget>[
+          content.add(Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
             rb,
             //SizedBox(width: 8.0),
             t,

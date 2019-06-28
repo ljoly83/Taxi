@@ -77,7 +77,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                 picked: _ambulance.day,
                                 orientation:
                                     GroupedButtonsOrientation.HORIZONTAL,
-                                margin: const EdgeInsets.only(left: 20.0),
+                                margin: const EdgeInsets.only(left: 0.0),
                                 labels: _ambulance.dayList,
                                 onChange: (String label, int index) =>
                                     _ambulance.setSelectedDay(index),
@@ -178,21 +178,46 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                        TextField(
-                          style: TextStyle(color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Péage', labelStyle: _style),
-                          onSubmitted: (val) =>
-                              setState(() => _ambulance.peage = int.parse(val)),
-                        ),
-                        TextField(
-                          style: TextStyle(color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Suppléments', labelStyle: _style),
-                          onSubmitted: (val) => setState(
-                              () => _ambulance.supplements = int.parse(val)),
+                        Row(
+                          children: <Widget>[
+                            Flexible(
+                                // Flexible is need for TextField to be rendered
+                                child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: TextField(
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Péage', labelStyle: _style),
+                                    onSubmitted: (val) => setState(() =>
+                                        _ambulance.peage = int.parse(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            )),
+                            Flexible(
+                                // Flexible is need for TextField to be rendered
+                                child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: TextField(
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Suppléments',
+                                        labelStyle: _style),
+                                    onSubmitted: (val) => setState(() =>
+                                        _ambulance.supplements =
+                                            int.parse(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            ))
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
                         Row(
                           children: <Widget>[
@@ -210,10 +235,10 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                         labelStyle: _style),
                                     onSubmitted: (val) => setState(
                                           () {
-                                        _ambulance.partRo = int.parse(val);
-                                        _param.partRo = _ambulance.partRo;
-                                      },
-                                    ),
+                                            _ambulance.partRo = int.parse(val);
+                                            _param.partRo = _ambulance.partRo;
+                                          },
+                                        ),
                                   ),
                                 )
                                 //container

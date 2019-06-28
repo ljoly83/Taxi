@@ -59,7 +59,7 @@ class VSLFormState extends State<VSLForm> {
     _vsl.partRo = _param.partRo;
     _vsl.partRc = _param.partRc;
     _RoController = new TextEditingController(text: _vsl.partRo.toString());
-    _RcController = new TextEditingController(text:_vsl.partRc.toString());
+    _RcController = new TextEditingController(text: _vsl.partRc.toString());
     // Recompute
     _vsl.computeTotal();
   }
@@ -136,11 +136,11 @@ class VSLFormState extends State<VSLForm> {
                               margin: const EdgeInsets.only(left: 20.0),
                               labels: _vsl.flatRateList,
                               onChange: (String label, int index) =>
-                              //  print("label: $label index: $index"),
-                              _vsl.setSelectedFlatRate(index),
+                                  //  print("label: $label index: $index"),
+                                  _vsl.setSelectedFlatRate(index),
                               onSelected: (String label) => setState(() {
-                                _vsl.flatRate = label;
-                              }),
+                                    _vsl.flatRate = label;
+                                  }),
                             ),
                           ],
                         ),
@@ -166,21 +166,45 @@ class VSLFormState extends State<VSLForm> {
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                        TextField(
-                          style: TextStyle(color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Péage', labelStyle: _style),
-                          onSubmitted: (val) =>
-                              setState(() => _vsl.peage = int.parse(val)),
-                        ),
-                        TextField(
-                          style: TextStyle(color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Suppléments', labelStyle: _style),
-                          onSubmitted: (val) =>
-                              setState(() => _vsl.supplements = int.parse(val)),
+                        Row(
+                          children: <Widget>[
+                            Flexible(
+                                // Flexible is need for TextField to be rendered
+                                child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: TextField(
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Péage', labelStyle: _style),
+                                    onSubmitted: (val) => setState(
+                                        () => _vsl.peage = int.parse(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            )),
+                            Flexible(
+                                // Flexible is need for TextField to be rendered
+                                child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: TextField(
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Suppléments',
+                                        labelStyle: _style),
+                                    onSubmitted: (val) => setState(() =>
+                                        _vsl.supplements = int.parse(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            ))
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
                         TextField(
                           style: TextStyle(color: Colors.black),
