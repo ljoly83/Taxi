@@ -235,12 +235,14 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
                                         labelStyle: _style),
+                                    onChanged: (val) => setState(
+                                            () {
+                                          _ambulance.partRo = int.parse(val);
+                                          _param.partRo = _ambulance.partRo;
+                                          _RcController = new TextEditingController(text: _param.partRc.toString());
+                                        }),
                                     onSubmitted: (val) => setState(
-                                          () {
-                                            _ambulance.partRo = int.parse(val);
-                                            _param.partRo = _ambulance.partRo;
-                                          },
-                                        ),
+                                            () => _param.setPartRo(val)),
                                   ),
                                 )
                                 //container
@@ -258,6 +260,12 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
                                         labelStyle: _style),
+                                    onChanged: (val) => setState(
+                                            () {
+                                          _ambulance.partRc = int.parse(val);
+                                          _param.partRc = _ambulance.partRc;
+                                          _RoController = new TextEditingController(text: _param.partRo.toString());
+                                        }),
                                     onSubmitted: (val) => setState(
                                           () {
                                             _ambulance.partRc = int.parse(val);

@@ -102,7 +102,8 @@ class Ambulance {
   }
 
   set partRo(value){
-    _partRo = value;
+    _partRo = int.parse(value);
+    _partRc = 100 - _partRo;
     computeTotal();
   }
 
