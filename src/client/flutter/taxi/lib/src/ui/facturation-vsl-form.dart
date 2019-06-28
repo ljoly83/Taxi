@@ -69,27 +69,62 @@ class VSLFormState extends State<VSLForm> {
                               labels: _vsl.dayList,
                               onChange: (String label, int index) =>
                                   _vsl.setSelectedDay(index),
-                              onSelected: (String label) => setState((){
-                                _vsl.day = label;
-                              }),
+                              onSelected: (String label) => setState(() {
+                                    _vsl.day = label;
+                                  }),
                             ),
                           ],
                         ),
+//                        Row(
+//                          mainAxisAlignment: MainAxisAlignment.center,
+//                          children: <Widget>[
+//                            CheckboxGroup(
+//                              orientation: GroupedButtonsOrientation.HORIZONTAL,
+//                              labels: <String>[
+//                                "Aéroport",
+//                                "Aller/Retour",
+//                              ],
+//                              onChange: (bool isChecked, String label,
+//                                      int index) =>
+//                                  print(
+//                                      "isChecked: $isChecked   label: $label  index: $index"),
+//                              onSelected: (List<String> checked) =>
+//                                  print("checked: ${checked.toString()}"),
+//                            ),
+//                          ],
+//                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            CheckboxGroup(
-                              orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              labels: <String>[
-                                "Aéroport",
-                                "Aller/Retour",
+                            // [Monday] checkbox
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Checkbox(
+                                  value: _vsl.aeroport,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      _vsl.aeroport = value;
+                                    });
+                                  },
+                                ),
+                                Text("Aéroport"),
                               ],
-                              onChange: (bool isChecked, String label,
-                                      int index) =>
-                                  print(
-                                      "isChecked: $isChecked   label: $label  index: $index"),
-                              onSelected: (List<String> checked) =>
-                                  print("checked: ${checked.toString()}"),
+                            ),
+                            // [Tuesday] checkbox
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Checkbox(
+                                  value: _vsl.allerRetour,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      _vsl.allerRetour = value;
+                                    });
+                                  },
+                                ),
+                                Text("Aller/Retour"),
+                              ],
                             ),
                           ],
                         ),
@@ -102,8 +137,9 @@ class VSLFormState extends State<VSLForm> {
                               margin: const EdgeInsets.only(left: 20.0),
                               labels: _vsl.flatRateList,
                               onChange: (String label, int index) =>
+                              //  print("label: $label index: $index"),
                               _vsl.setSelectedFlatRate(index),
-                              onSelected: (String label) => setState((){
+                              onSelected: (String label) => setState(() {
                                 _vsl.flatRate = label;
                               }),
                             ),
@@ -112,16 +148,16 @@ class VSLFormState extends State<VSLForm> {
                         Row(
                           children: <Widget>[
                             Flexible(
-                                // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextField to be rendered
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
+                                  child: TextField(
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Kms', labelStyle: _style),
-                                    onSaved: (val) => setState(
+                                    onSubmitted: (val) => setState(
                                         () => _vsl.kms = int.parse(val)),
                                   ),
                                 )
@@ -131,46 +167,46 @@ class VSLFormState extends State<VSLForm> {
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                        TextFormField(
+                        TextField(
                           style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelText: 'Péage', labelStyle: _style),
-                          onSaved: (val) =>
+                          onSubmitted: (val) =>
                               setState(() => _vsl.peage = int.parse(val)),
                         ),
-                        TextFormField(
+                        TextField(
                           style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelText: 'Suppléments', labelStyle: _style),
-                          onSaved: (val) =>
+                          onSubmitted: (val) =>
                               setState(() => _vsl.supplements = int.parse(val)),
                         ),
-                        TextFormField(
+                        TextField(
                           style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelText: 'Nb. de personnes',
                               labelStyle: _style),
-                          onSaved: (val) =>
-                              setState(() => _vsl.supplements = int.parse(val)),
+                          onSubmitted: (val) =>
+                              setState(() => _vsl.nbPersonnes = int.parse(val)),
                         ),
                         Row(
                           children: <Widget>[
                             Flexible(
-                                // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextField to be rendered
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
-                                    initialValue: _param.partRo.toString(),
+                                  child: TextField(
+                                    //initialValue: _param.partRo.toString(),
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RO',
                                         labelStyle: _style),
-                                    onSaved: (val) => setState(
+                                    onSubmitted: (val) => setState(
                                         () => _vsl.partRo = int.parse(val)),
                                   ),
                                 )
@@ -178,19 +214,19 @@ class VSLFormState extends State<VSLForm> {
                               ],
                             )),
                             Flexible(
-                                // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextField to be rendered
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
+                                  child: TextField(
                                     style: TextStyle(color: Colors.black),
-                                    initialValue: _param.partRc.toString(),
+                                    //initialValue: _param.partRc.toString(),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RC',
                                         labelStyle: _style),
-                                    onSaved: (val) => setState(
-                                        () => _vsl.partRC = int.parse(val)),
+                                    onSubmitted: (val) => setState(
+                                        () => _vsl.partRc = int.parse(val)),
                                   ),
                                 )
                                 //container
@@ -206,7 +242,7 @@ class VSLFormState extends State<VSLForm> {
                           child: Row(
                             children: <Widget>[
                               Flexible(
-                                  // Flexible is need for TextFormField to be rendered
+                                  // Flexible is need for TextField to be rendered
                                   child: Column(
                                 children: <Widget>[
                                   Container(
@@ -219,7 +255,7 @@ class VSLFormState extends State<VSLForm> {
                                 ],
                               )),
                               Flexible(
-                                  // Flexible is need for TextFormField to be rendered
+                                  // Flexible is need for TextField to be rendered
                                   child: Column(
                                 children: <Widget>[
                                   Container(

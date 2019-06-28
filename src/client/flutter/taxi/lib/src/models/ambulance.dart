@@ -142,8 +142,8 @@ class Ambulance {
 
   debug() {
     print ('------------------------');
-    print ('Day:' + day);
-    print ('Forfait:' + flatRate);
+    print ('Day:' + _day);
+    print ('Forfait:' + _flatRate);
     var i=0;
     String out ="";
     selectedSupplementList.forEach((v) {
@@ -154,12 +154,12 @@ class Ambulance {
     out = "";
     i=0;
     _supplement.forEach((v) {
-      out = out + '- ' +  'supplement:' + supplement[i];
+      out = out + '- ' +  'supplement:' + _supplement[i];
       i = i+1;
     });
     print(out);
-    print ('GardeCentre15:' + gardeCentre15.toString());
-    print ('Aller/Retour:' + allerRetour.toString());
+    print ('GardeCentre15:' + _gardeCentre15.toString());
+    print ('Aller/Retour:' + _allerRetour.toString());
 
     out = "";
     i=0;
@@ -169,12 +169,12 @@ class Ambulance {
     });
    print(out);
     out = "";
-    print ('kms:' + kms.toString());
-    print ('peage:' + peage.toString());
-    print ('supplements:' + supplements.toString());
-    print ('partRo:' + partRo.toString());
-    print ('partRc:' + partRc.toString());
-    print ('total:' + total.toString());
+    print ('kms:' + _kms.toString());
+    print ('peage:' + _peage.toString());
+    print ('supplements:' + _supplements.toString());
+    print ('partRo:' + _partRo.toString());
+    print ('partRc:' + _partRc.toString());
+    print ('total:' + _total.toString());
 
   }
 }

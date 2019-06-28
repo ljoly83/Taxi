@@ -143,12 +143,12 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
+                                  child: TextField(
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Kms', labelStyle: _style),
-                                    onSaved: (val) => setState(
+                                    onSubmitted: (val) => setState(
                                         () => _ambulance.kms = int.parse(val)),
                                   ),
                                 )
@@ -158,37 +158,37 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                        TextFormField(
+                        TextField(
                           style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelText: 'Péage', labelStyle: _style),
-                          onSaved: (val) =>
+                          onSubmitted: (val) =>
                               setState(() => _ambulance.peage = int.parse(val)),
                         ),
-                        TextFormField(
+                        TextField(
                           style: TextStyle(color: Colors.black),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelText: 'Suppléments', labelStyle: _style),
-                          onSaved: (val) => setState(
+                          onSubmitted: (val) => setState(
                               () => _ambulance.supplements = int.parse(val)),
                         ),
                         Row(
                           children: <Widget>[
                             Flexible(
-                                // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextField to be rendered
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
-                                    initialValue: _param.partRo.toString(),
+                                  child: TextField(
+                                    //initialValue: _param.partRo.toString(),
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
                                         labelStyle: _style),
-                                    onSaved: (val) => setState(() =>
+                                    onSubmitted: (val) => setState(() =>
                                         _ambulance.partRo = int.parse(val)),
                                   ),
                                 )
@@ -196,18 +196,18 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               ],
                             )),
                             Flexible(
-                                // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextField to be rendered
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
-                                    initialValue: _param.partRc.toString(),
+                                  child: TextField(
+                                    //initialValue: _param.partRc.toString(),
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
                                         labelStyle: _style),
-                                    onSaved: (val) => setState(() =>
+                                    onSubmitted: (val) => setState(() =>
                                         _ambulance.partRc = int.parse(val)),
                                   ),
                                 )
@@ -224,7 +224,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           child: Row(
                             children: <Widget>[
                               Flexible(
-                                  // Flexible is need for TextFormField to be rendered
+                                  // Flexible is need for TextField to be rendered
                                   child: Column(
                                 children: <Widget>[
                                   Container(
@@ -237,7 +237,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                 ],
                               )),
                               Flexible(
-                                  // Flexible is need for TextFormField to be rendered
+                                  // Flexible is need for TextField to be rendered
                                   child: Column(
                                 children: <Widget>[
                                   Container(
