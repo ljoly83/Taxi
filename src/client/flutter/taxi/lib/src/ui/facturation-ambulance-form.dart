@@ -37,7 +37,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
   TextEditingController _RoController;
   TextEditingController _RcController;
 
-
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
   TextStyle _style =
@@ -51,8 +50,10 @@ class AmbulanceFormState extends State<AmbulanceForm> {
     // Retrieve global settings
     _ambulance.partRo = _param.partRo;
     _ambulance.partRc = _param.partRc;
-    _RoController = new TextEditingController(text: _ambulance.partRo.toString());
-    _RcController = new TextEditingController(text:_ambulance.partRc.toString());
+    _RoController =
+        new TextEditingController(text: _ambulance.partRo.toString());
+    _RcController =
+        new TextEditingController(text: _ambulance.partRc.toString());
     // Recompute
     _ambulance.computeTotal();
   }
@@ -74,14 +75,15 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           children: <Widget>[
                             RadioButtonGroup(
                                 picked: _ambulance.day,
-                                orientation: GroupedButtonsOrientation.HORIZONTAL,
+                                orientation:
+                                    GroupedButtonsOrientation.HORIZONTAL,
                                 margin: const EdgeInsets.only(left: 20.0),
                                 labels: _ambulance.dayList,
                                 onChange: (String label, int index) =>
                                     _ambulance.setSelectedDay(index),
                                 onSelected: (String label) => setState(() {
-                                  _ambulance.day = label;
-                                })),
+                                      _ambulance.day = label;
+                                    })),
                           ],
                         ),
                         Row(
@@ -206,8 +208,12 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
                                         labelStyle: _style),
-                                    onSubmitted: (val) => setState(() =>
-                                        _ambulance.partRo = int.parse(val)),
+                                    onSubmitted: (val) => setState(
+                                          () {
+                                        _ambulance.partRo = int.parse(val);
+                                        _param.partRo = _ambulance.partRo;
+                                      },
+                                    ),
                                   ),
                                 )
                                 //container
@@ -225,8 +231,12 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
                                         labelStyle: _style),
-                                    onSubmitted: (val) => setState(() =>
-                                        _ambulance.partRc = int.parse(val)),
+                                    onSubmitted: (val) => setState(
+                                          () {
+                                            _ambulance.partRc = int.parse(val);
+                                            _param.partRc = _ambulance.partRc;
+                                          },
+                                        ),
                                   ),
                                 )
                                 //container
