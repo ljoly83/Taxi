@@ -97,8 +97,10 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               onChange: (bool isChecked, String label,
                                       int index) =>
                                   _ambulance.setSelectedSupp(index, isChecked),
-                              onSelected: (List<String> checked) =>
-                                  print("checked: ${checked.toString()}"),
+                              onSelected: (List<String> checked) {
+                                print("checked: ${checked.toString()}");
+                                _ambulance.setSelectedSupp2(checked);
+                              },
                               //_ambulance.supplement = checked,
                             ),
                           ],

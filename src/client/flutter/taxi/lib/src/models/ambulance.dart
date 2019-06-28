@@ -36,7 +36,7 @@ class Ambulance {
     return _flatRate;
   }
 
-  set flatRate(value){
+  set flatRate(value) {
     _flatRate = value;
     computeTotal();
   }
@@ -132,7 +132,7 @@ class Ambulance {
   setSelectedFlatRate(index){
     selectedflatRateList = <bool>[true,false,false];
     selectedDayList[index]=true;
-    computeTotal();
+    //computeTotal();
   }
 
   setSelectedSupp(index, isChecked){
@@ -140,6 +140,14 @@ class Ambulance {
     computeTotal();
   }
 
+  //TODO implement correctly this method
+  setSelectedSupp2(List<String> checked){
+    for (int i ; i < supplementList.length - 1; i++){
+      for (int j ; j < checked.length - 1; j++) {
+        (supplementList.contains(checked[j])) ? selectedSupplementList[i] = true : selectedSupplementList[i]=false;
+      }
+    };
+  }
   computeTotal() {
     // Simulate Random value
     var rng = new Random();
