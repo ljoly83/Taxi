@@ -42,10 +42,27 @@ class VSLFormState extends State<VSLForm> {
   final _vsl = VSL();
   final _param = Parameters();
 
+  TextEditingController _RoController;
+  TextEditingController _RcController;
+
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
   TextStyle _style =
       TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
+
+  // Method called at each Frame enter
+  @override
+  void initState() {
+    super.initState();
+    print('VSLForm:InitState Called');
+    // Retrieve global settings
+    _vsl.partRo = _param.partRo;
+    _vsl.partRc = _param.partRc;
+    _RoController = new TextEditingController(text: _vsl.partRo.toString());
+    _RcController = new TextEditingController(text:_vsl.partRc.toString());
+    // Recompute
+    _vsl.computeTotal();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,24 +92,6 @@ class VSLFormState extends State<VSLForm> {
                             ),
                           ],
                         ),
-//                        Row(
-//                          mainAxisAlignment: MainAxisAlignment.center,
-//                          children: <Widget>[
-//                            CheckboxGroup(
-//                              orientation: GroupedButtonsOrientation.HORIZONTAL,
-//                              labels: <String>[
-//                                "Aéroport",
-//                                "Aller/Retour",
-//                              ],
-//                              onChange: (bool isChecked, String label,
-//                                      int index) =>
-//                                  print(
-//                                      "isChecked: $isChecked   label: $label  index: $index"),
-//                              onSelected: (List<String> checked) =>
-//                                  print("checked: ${checked.toString()}"),
-//                            ),
-//                          ],
-//                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -200,7 +199,7 @@ class VSLFormState extends State<VSLForm> {
                               children: <Widget>[
                                 Container(
                                   child: TextField(
-                                    //initialValue: _param.partRo.toString(),
+                                    controller: _RoController,
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
@@ -220,7 +219,7 @@ class VSLFormState extends State<VSLForm> {
                                 Container(
                                   child: TextField(
                                     style: TextStyle(color: Colors.black),
-                                    //initialValue: _param.partRc.toString(),
+                                    controller: _RcController,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RC',

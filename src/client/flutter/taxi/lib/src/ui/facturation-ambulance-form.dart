@@ -34,10 +34,28 @@ class AmbulanceFormState extends State<AmbulanceForm> {
   final _ambulance = Ambulance();
   final _param = Parameters();
 
+  TextEditingController _RoController;
+  TextEditingController _RcController;
+
+
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
   TextStyle _style =
       TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
+
+  // Method called at each Frame enter
+  @override
+  void initState() {
+    super.initState();
+    print('AmbulanceForm:InitState Called');
+    // Retrieve global settings
+    _ambulance.partRo = _param.partRo;
+    _ambulance.partRc = _param.partRc;
+    _RoController = new TextEditingController(text: _ambulance.partRo.toString());
+    _RcController = new TextEditingController(text:_ambulance.partRc.toString());
+    // Recompute
+    _ambulance.computeTotal();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +200,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               children: <Widget>[
                                 Container(
                                   child: TextField(
-                                    //initialValue: _param.partRo.toString(),
+                                    controller: _RoController,
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
@@ -201,7 +219,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               children: <Widget>[
                                 Container(
                                   child: TextField(
-                                    //initialValue: _param.partRc.toString(),
+                                    controller: _RcController,
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(

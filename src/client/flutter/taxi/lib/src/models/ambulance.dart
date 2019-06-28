@@ -1,5 +1,6 @@
-class Ambulance {
+import 'dart:math';
 
+class Ambulance {
 
   List<String> dayList = <String>["Jour","Nuit","Férié"];
   List<bool> selectedDayList = <bool>[true,false,false];
@@ -137,7 +138,10 @@ class Ambulance {
   }
 
   computeTotal() {
-   debug();
+    // Simulate Random value
+    var rng = new Random();
+    total = total + 5;
+    debug();
   }
 
   debug() {

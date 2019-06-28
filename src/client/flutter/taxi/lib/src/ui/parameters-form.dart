@@ -38,10 +38,21 @@ class ParamsFormState extends State<ParamsForm> {
 
   final _param = Parameters();
 
+  TextEditingController _RoController;
+  TextEditingController _RcController;
+
+
   // Theme.of(context).textTheme.display1 raise a error
   // Define style here
   TextStyle _style =
       TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
+
+  @override
+  void initState() {
+    super.initState();
+    _RoController = new TextEditingController(text: _param.partRo.toString());
+    _RcController = new TextEditingController(text: _param.partRc.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +84,7 @@ class ParamsFormState extends State<ParamsForm> {
                               child: Text(value),
                             );
                           }).toList(),
+
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,8 +94,6 @@ class ParamsFormState extends State<ParamsForm> {
                                 orientation: GroupedButtonsOrientation.VERTICAL,
                                 margin: const EdgeInsets.only(left: 20.0),
                                 labels: _param.zoneList,
-                                onChange: (String label, int index) =>
-                                    print("label: $label index: $index"),
                                 onSelected: (String label) => setState(() {
                                       _param.zone = label;
                                     })),
@@ -96,14 +106,14 @@ class ParamsFormState extends State<ParamsForm> {
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
-                                    initialValue: _param.partRo.toString(),
+                                  child: TextField(
+                                    controller: _RoController,
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
                                         labelStyle: _style),
-                                    onSaved: (val) => setState(
+                                    onSubmitted: (val) => setState(
                                         () => _param.partRo = int.parse(val)),
                                   ),
                                 )
@@ -115,14 +125,14 @@ class ParamsFormState extends State<ParamsForm> {
                                 child: Column(
                               children: <Widget>[
                                 Container(
-                                  child: TextFormField(
-                                    initialValue: _param.partRc.toString(),
+                                  child: TextField(
+                                    controller: _RcController,
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
                                         labelStyle: _style),
-                                    onSaved: (val) => setState(
+                                    onSubmitted: (val) => setState(
                                         () => _param.partRc = int.parse(val)),
                                   ),
                                 )
