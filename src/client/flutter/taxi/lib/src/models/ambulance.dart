@@ -126,15 +126,18 @@ class Ambulance {
   setSelectedDay (int index){
     selectedDayList = <bool>[false,false,false];
     selectedDayList[index]=true;
+    //computeTotal(); done in set day
   }
 
   setSelectedFlatRate(index){
     selectedflatRateList = <bool>[true,false,false];
     selectedDayList[index]=true;
+    computeTotal();
   }
 
   setSelectedSupp(index, isChecked){
     selectedSupplementList[index] = isChecked;
+    computeTotal();
   }
 
   computeTotal() {

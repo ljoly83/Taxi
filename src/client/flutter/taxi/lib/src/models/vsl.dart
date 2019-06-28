@@ -1,3 +1,8 @@
+import 'dart:math';
+
+/**
+ * Model class for facturation-vsl-form.dart
+ */
 class VSL {
 
   List<String> dayList = <String>["Jour","Nuit","Férié"];
@@ -117,6 +122,9 @@ class VSL {
   }
 
   computeTotal() {
+    // Simulate Random value
+    var rng = new Random();
+    total = total + 5;
     debug();
   }
 

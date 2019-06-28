@@ -1,5 +1,7 @@
 import 'package:url_launcher/url_launcher.dart';
-
+/**
+ * Model class for register-form.dart
+ */
 class User {
 
   String societe = '';

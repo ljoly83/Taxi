@@ -136,7 +136,6 @@ class VSLFormState extends State<VSLForm> {
                               margin: const EdgeInsets.only(left: 20.0),
                               labels: _vsl.flatRateList,
                               onChange: (String label, int index) =>
-                                  //  print("label: $label index: $index"),
                                   _vsl.setSelectedFlatRate(index),
                               onSelected: (String label) => setState(() {
                                     _vsl.flatRate = label;
@@ -230,7 +229,11 @@ class VSLFormState extends State<VSLForm> {
                                         labelText: 'Part RO',
                                         labelStyle: _style),
                                     onSubmitted: (val) => setState(
-                                        () => _vsl.partRo = int.parse(val)),
+                                          () {
+                                        _vsl.partRc = int.parse(val);
+                                        _param.partRc = _vsl.partRc;
+                                      },
+                                    ),
                                   ),
                                 )
                                 //container
@@ -249,7 +252,11 @@ class VSLFormState extends State<VSLForm> {
                                         labelText: 'Part RC',
                                         labelStyle: _style),
                                     onSubmitted: (val) => setState(
-                                        () => _vsl.partRc = int.parse(val)),
+                                          () {
+                                        _vsl.partRc = int.parse(val);
+                                        _param.partRc = _vsl.partRc;
+                                      },
+                                    ),
                                   ),
                                 )
                                 //container
@@ -282,7 +289,7 @@ class VSLFormState extends State<VSLForm> {
                                   child: Column(
                                 children: <Widget>[
                                   Container(
-                                    child: Text("0",
+                                    child: Text(_vsl.total.toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 15)),

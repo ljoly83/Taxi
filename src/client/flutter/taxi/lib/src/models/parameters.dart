@@ -1,5 +1,7 @@
+/**
+ * Model class for parameters-form.dart
+ */
 class Parameters {
-
 
   List<String> yearList = <String>['2015','2013','2012'];
   List<String> zoneList = <String>["Zone A - 13,85 €", "Zone B - 13,45 €", "Zone C - 12,60 €", "Zone D - 11,97 €"];
