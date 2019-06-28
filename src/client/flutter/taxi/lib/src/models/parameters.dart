@@ -54,6 +54,20 @@ class Parameters {
     debug();
   }
 
+  setPartRo(String val){
+    _partRo = int.parse(val);
+    _partRc = 100 - _partRo;
+    debug();
+  }
+
+  setPartRc(String val){
+    _partRc = int.parse(val);
+    _partRo = 100 - _partRc;
+    debug();
+  }
+
+
+
   debug() {
     print('------------------------');
     print('Year:' + year);

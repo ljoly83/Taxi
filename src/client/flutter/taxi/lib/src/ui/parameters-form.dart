@@ -113,8 +113,13 @@ class ParamsFormState extends State<ParamsForm> {
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
                                         labelStyle: _style),
+                                    onChanged: (val) => setState(
+                                            () {
+                                              _param.setPartRo(val);
+                                              _RcController = new TextEditingController(text: _param.partRc.toString());
+                                            }),
                                     onSubmitted: (val) => setState(
-                                        () => _param.partRo = int.parse(val)),
+                                            () => _param.setPartRo(val)),
                                   ),
                                 )
                                 //container
@@ -132,8 +137,13 @@ class ParamsFormState extends State<ParamsForm> {
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
                                         labelStyle: _style),
+                                    onChanged: (val) => setState(
+                                            () {
+                                          _param.setPartRc(val);
+                                          _RoController = new TextEditingController(text: _param.partRo.toString());
+                                        }),
                                     onSubmitted: (val) => setState(
-                                        () => _param.partRc = int.parse(val)),
+                                        () => _param.setPartRc(val)),
                                   ),
                                 )
                                 //container
