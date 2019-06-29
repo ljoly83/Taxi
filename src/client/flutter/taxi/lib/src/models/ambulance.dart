@@ -102,7 +102,7 @@ class Ambulance {
   }
 
   set partRo(value){
-    _partRo = int.parse(value);
+    _partRo = value;
     _partRc = 100 - _partRo;
     computeTotal();
   }
@@ -110,9 +110,10 @@ class Ambulance {
   get partRc {
     return _partRc;
   }
-
+  // TODO don't undertand why set partRc/setPartRc does not does the same thing with the same code regarding UI refresh
+  // It work but it's weird
   set partRc(value){
-    _partRc = int.parse(value);
+    _partRc = value;
     _partRo = 100 - _partRc;
     computeTotal();
   }

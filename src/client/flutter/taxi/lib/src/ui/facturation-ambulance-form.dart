@@ -221,65 +221,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-//                        Row(
-//                          children: <Widget>[
-//                            Flexible(
-//                                // Flexible is need for TextField to be rendered
-//                                child: Column(
-//                              children: <Widget>[
-//                                Container(
-//                                  child: TextField(
-//                                    controller: _RoController,
-//                                    style: TextStyle(color: Colors.black),
-//                                    keyboardType: TextInputType.number,
-//                                    decoration: InputDecoration(
-//                                        labelText: 'Part RO (%)',
-//                                        labelStyle: _style),
-//                                    onChanged: (val) => setState(
-//                                            () {
-//                                          _ambulance.partRo = int.parse(val);
-//                                          _param.partRo = _ambulance.partRo;
-//                                          _RcController = new TextEditingController(text: _param.partRc.toString());
-//                                        }),
-//                                    onSubmitted: (val) => setState(
-//                                            () => _param.setPartRo(val)),
-//                                  ),
-//                                )
-//                                //container
-//                              ],
-//                            )),
-//                            Flexible(
-//                                // Flexible is need for TextField to be rendered
-//                                child: Column(
-//                              children: <Widget>[
-//                                Container(
-//                                  child: TextField(
-//                                    controller: _RcController,
-//                                    style: TextStyle(color: Colors.black),
-//                                    keyboardType: TextInputType.number,
-//                                    decoration: InputDecoration(
-//                                        labelText: 'Part RC (%)',
-//                                        labelStyle: _style),
-//                                    onChanged: (val) => setState(
-//                                            () {
-//                                          _ambulance.partRc = int.parse(val);
-//                                          _param.partRc = _ambulance.partRc;
-//                                          _RoController = new TextEditingController(text: _param.partRo.toString());
-//                                        }),
-//                                    onSubmitted: (val) => setState(
-//                                          () {
-//                                            _ambulance.partRc = int.parse(val);
-//                                            _param.partRc = _ambulance.partRc;
-//                                          },
-//                                        ),
-//                                  ),
-//                                )
-//                                //container
-//                              ],
-//                            ))
-//                          ],
-//                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                        ),
                         Row(
                           children: <Widget>[
                             Flexible(

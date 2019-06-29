@@ -168,104 +168,56 @@ class VSLFormState extends State<VSLForm> {
                         Row(
                           children: <Widget>[
                             Flexible(
-                                // Flexible is need for TextField to be rendered
+                              // Flexible is need for TextFormField to be rendered
                                 child: Column(
-                              children: <Widget>[
-                                Container(
-                                  child: TextField(
-                                    style: TextStyle(color: Colors.black),
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                        labelText: 'Péage', labelStyle: _style),
-                                    onSubmitted: (val) => setState(
-                                        () => _vsl.peage = int.parse(val)),
-                                  ),
-                                )
-                                //container
-                              ],
-                            )),
+                                  children: <Widget>[
+                                    Container(
+                                      child: TextField(
+                                        controller: _RoController,
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            labelText: 'Part RO (%)',
+                                            labelStyle: _style),
+                                        onChanged: (val) => setState(
+                                                () {
+                                              _param.setPartRo(val);
+                                              _RcController = new TextEditingController(text: _param.partRc.toString());
+                                            }),
+                                        onSubmitted: (val) => setState(
+                                                () => _param.setPartRo(val)),
+                                      ),
+                                    )
+                                    //container
+                                  ],
+                                )),
                             Flexible(
-                                // Flexible is need for TextField to be rendered
+                              // Flexible is need for TextFormField to be rendered
                                 child: Column(
-                              children: <Widget>[
-                                Container(
-                                  child: TextField(
-                                    style: TextStyle(color: Colors.black),
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                        labelText: 'Suppléments',
-                                        labelStyle: _style),
-                                    onSubmitted: (val) => setState(() =>
-                                        _vsl.supplements = int.parse(val)),
-                                  ),
-                                )
-                                //container
-                              ],
-                            ))
+                                  children: <Widget>[
+                                    Container(
+                                      child: TextField(
+                                        controller: _RcController,
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                            labelText: 'Part RC (%)',
+                                            labelStyle: _style),
+                                        onChanged: (val) => setState(
+                                                () {
+                                              _param.setPartRc(val);
+                                              _RoController = new TextEditingController(text: _param.partRo.toString());
+                                            }),
+                                        onSubmitted: (val) => setState(
+                                                () => _param.setPartRc(val)),
+                                      ),
+                                    )
+                                    //container
+                                  ],
+                                ))
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
-                        TextField(
-                          style: TextStyle(color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: 'Nb. de personnes',
-                              labelStyle: _style),
-                          onSubmitted: (val) =>
-                              setState(() => _vsl.nbPersonnes = int.parse(val)),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Flexible(
-                                // Flexible is need for TextField to be rendered
-                                child: Column(
-                              children: <Widget>[
-                                Container(
-                                  child: TextField(
-                                    controller: _RoController,
-                                    style: TextStyle(color: Colors.black),
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                        labelText: 'Part RO',
-                                        labelStyle: _style),
-                                    onSubmitted: (val) => setState(
-                                          () {
-                                        _vsl.partRc = int.parse(val);
-                                        _param.partRc = _vsl.partRc;
-                                      },
-                                    ),
-                                  ),
-                                )
-                                //container
-                              ],
-                            )),
-                            Flexible(
-                                // Flexible is need for TextField to be rendered
-                                child: Column(
-                              children: <Widget>[
-                                Container(
-                                  child: TextField(
-                                    style: TextStyle(color: Colors.black),
-                                    controller: _RcController,
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                        labelText: 'Part RC',
-                                        labelStyle: _style),
-                                    onSubmitted: (val) => setState(
-                                          () {
-                                        _vsl.partRc = int.parse(val);
-                                        _param.partRc = _vsl.partRc;
-                                      },
-                                    ),
-                                  ),
-                                )
-                                //container
-                              ],
-                            ))
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        ),
-
                         Container(
                           padding: const EdgeInsets.symmetric(
                               vertical: 16.0, horizontal: 0.0),

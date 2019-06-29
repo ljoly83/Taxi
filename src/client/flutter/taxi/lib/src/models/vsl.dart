@@ -101,6 +101,7 @@ class VSL {
 
   set partRo(value){
     _partRo = value;
+    _partRc = 100 - _partRo;
     computeTotal();
   }
 
@@ -110,6 +111,19 @@ class VSL {
 
   set partRc(value){
     _partRc = value;
+    _partRo = 100 - _partRc;
+    computeTotal();
+  }
+
+  setPartRo(String val){
+    _partRo = int.parse(val);
+    _partRc = 100 - _partRo;
+    computeTotal();
+  }
+
+  setPartRc(String value){
+    _partRc = int.parse(value);
+    _partRo = 100 - _partRc;
     computeTotal();
   }
 
