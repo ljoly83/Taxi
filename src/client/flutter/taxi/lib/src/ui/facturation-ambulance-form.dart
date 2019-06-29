@@ -63,15 +63,15 @@ class AmbulanceFormState extends State<AmbulanceForm> {
     return SingleChildScrollView(
         child: Stack(children: <Widget>[
       Container(
-          padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+          alignment: Alignment.topLeft,
           child: Builder(
               builder: (context) => Form(
                   key: _formKey,
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RadioButtonGroup(
                                 picked: _ambulance.day,
@@ -87,7 +87,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                           ],
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             CheckboxGroup(
                               //TODO solve default selection storage (lost on screen change)
@@ -101,12 +100,10 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                 print("checked: ${checked.toString()}");
                                 _ambulance.setSelectedSupp2(checked);
                               },
-                              //_ambulance.supplement = checked,
                             ),
                           ],
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             // [Monday] checkbox
                             Row(
@@ -120,12 +117,11 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Garde centre 15"),
+                                Text("Garde 15"),
                               ],
                             ),
                             // [Tuesday] checkbox
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Checkbox(
                                   value: _ambulance.allerRetour,
@@ -135,19 +131,17 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Aller/Retour"),
+                                Text("A/R"),
                               ],
                             ),
                           ],
                         ),
                         // [Wednesday] checkbox
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RadioButtonGroup(
                               picked: _ambulance.flatRate,
                               orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              margin: const EdgeInsets.only(left: 20.0),
                               labels: _ambulance.flatRateList,
                               onChange: (String label, int index) =>
                                   //  print("label: $label index: $index"),
@@ -224,53 +218,57 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         Row(
                           children: <Widget>[
                             Flexible(
-                              // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextFormField to be rendered
                                 child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextField(
-                                        controller: _RoController,
-                                        style: TextStyle(color: Colors.black),
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Part RO (%)',
-                                            labelStyle: _style),
-                                        onChanged: (val) => setState(
-                                                () {
-                                              _param.setPartRo(val);
-                                              _RcController = new TextEditingController(text: _param.partRc.toString());
-                                            }),
-                                        onSubmitted: (val) => setState(
-                                                () => _param.setPartRo(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                )),
+                              children: <Widget>[
+                                Container(
+                                  child: TextField(
+                                    controller: _RoController,
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Part RO (%)',
+                                        labelStyle: _style),
+                                    onChanged: (val) => setState(() {
+                                          _param.setPartRo(val);
+                                          _RcController =
+                                              new TextEditingController(
+                                                  text:
+                                                      _param.partRc.toString());
+                                        }),
+                                    onSubmitted: (val) =>
+                                        setState(() => _param.setPartRo(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            )),
                             Flexible(
-                              // Flexible is need for TextFormField to be rendered
+                                // Flexible is need for TextFormField to be rendered
                                 child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextField(
-                                        controller: _RcController,
-                                        style: TextStyle(color: Colors.black),
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Part RC (%)',
-                                            labelStyle: _style),
-                                        onChanged: (val) => setState(
-                                                () {
-                                                  _param.setPartRc(val);
-                                              _RoController = new TextEditingController(text: _param.partRo.toString());
-                                            }),
-                                        onSubmitted: (val) => setState(
-                                                () => _param.setPartRc(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                ))
+                              children: <Widget>[
+                                Container(
+                                  child: TextField(
+                                    controller: _RcController,
+                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: 'Part RC (%)',
+                                        labelStyle: _style),
+                                    onChanged: (val) => setState(() {
+                                          _param.setPartRc(val);
+                                          _RoController =
+                                              new TextEditingController(
+                                                  text:
+                                                      _param.partRo.toString());
+                                        }),
+                                    onSubmitted: (val) =>
+                                        setState(() => _param.setPartRc(val)),
+                                  ),
+                                )
+                                //container
+                              ],
+                            ))
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),

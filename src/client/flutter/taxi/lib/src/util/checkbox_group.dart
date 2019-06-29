@@ -136,9 +136,9 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
         if(widget.orientation == GroupedButtonsOrientation.VERTICAL){
 
           content.add(Row(children: <Widget>[
-            SizedBox(width: 12.0),
+            SizedBox(width: 0.0),
             cb,
-            SizedBox(width: 12.0),
+            SizedBox(width: 0.0),
             t,
           ]));
 
@@ -146,7 +146,7 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
           // Modified to have label on the same line
           content.add(Row(children: <Widget>[
             cb,
-            SizedBox(width: 12.0),
+            SizedBox(width: 0.0),
             t,
           ]));
 

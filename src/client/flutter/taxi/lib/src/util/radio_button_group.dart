@@ -127,9 +127,9 @@ class _RadioButtonGroupState extends State<RadioButtonGroup> {
         if(widget.orientation == GroupedButtonsOrientation.VERTICAL){
 
           content.add(Row(children: <Widget>[
-            SizedBox(width: 12.0),
+            //SizedBox(width: 0.0),
             rb,
-            SizedBox(width: 12.0),
+            //SizedBox(width: 0.0),
             t,
           ]));
 

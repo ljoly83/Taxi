@@ -70,19 +70,17 @@ class VSLFormState extends State<VSLForm> {
         child: Stack(children: <Widget>[
       Container(
           padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+          alignment: Alignment.topLeft,
           child: Builder(
               builder: (context) => Form(
                   key: _formKey,
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RadioButtonGroup(
                               picked: _vsl.day,
                               orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              margin: const EdgeInsets.only(left: 20.0),
                               labels: _vsl.dayList,
                               onChange: (String label, int index) =>
                                   _vsl.setSelectedDay(index),
@@ -93,7 +91,6 @@ class VSLFormState extends State<VSLForm> {
                           ],
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             // [Monday] checkbox
                             Row(
@@ -112,7 +109,6 @@ class VSLFormState extends State<VSLForm> {
                             ),
                             // [Tuesday] checkbox
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Checkbox(
                                   value: _vsl.allerRetour,
@@ -122,18 +118,16 @@ class VSLFormState extends State<VSLForm> {
                                     });
                                   },
                                 ),
-                                Text("Aller/Retour"),
+                                Text("A/R"),
                               ],
                             ),
                           ],
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RadioButtonGroup(
                               picked: _vsl.flatRate,
                               orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              margin: const EdgeInsets.only(left: 20.0),
                               labels: _vsl.flatRateList,
                               onChange: (String label, int index) =>
                                   _vsl.setSelectedFlatRate(index),
@@ -163,7 +157,6 @@ class VSLFormState extends State<VSLForm> {
                               ],
                             ))
                           ],
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
                         Row(
                           children: <Widget>[
@@ -216,7 +209,6 @@ class VSLFormState extends State<VSLForm> {
                                   ],
                                 ))
                           ],
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
