@@ -117,7 +117,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Garde 15"),
+                                Text("Garde Centre 15"),
                               ],
                             ),
                             // [Tuesday] checkbox
@@ -131,7 +131,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("A/R"),
+                                Text("Aller/Retour"),
                               ],
                             ),
                           ],

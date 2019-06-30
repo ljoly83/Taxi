@@ -118,7 +118,7 @@ class VSLFormState extends State<VSLForm> {
                                     });
                                   },
                                 ),
-                                Text("A/R"),
+                                Text("Aller/Retour"),
                               ],
                             ),
                           ],
