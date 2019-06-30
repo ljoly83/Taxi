@@ -10,13 +10,13 @@
 <ion-content padding>
 
     <ion-grid>
-        <ion-row>
+        <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
             <ion-content>
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <ion-row radio-group>
                         <ion-col>
                             <ion-item>
-                                <ion-label color="primary">Jour</ion-label>
+                                <ion-label color="secondary">Jour</ion-label>
                                 <ion-radio value="Jour"></ion-radio>
                             </ion-item>
                         </ion-col>

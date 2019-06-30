@@ -4,7 +4,12 @@
 class Parameters {
 
   List<String> yearList = <String>['2015','2013','2012'];
-  List<String> zoneList = <String>["Zone A - 13,85 €", "Zone B - 13,45 €", "Zone C - 12,60 €", "Zone D - 11,97 €"];
+  List<String> _zoneList = <String>["Zone A - 13,85 €", "Zone B - 13,45 €", "Zone C - 12,60 €", "Zone D - 11,97 €"];
+  var _zoneListMap = {
+    '2015': ["Zone A - 13,85 €", "Zone B - 13,45 €", "Zone C - 12,60 €", "Zone D - 11,97 €"],
+    '2013': ["Zone A - 13,28 €", "Zone B - 12,90 €", "Zone C - 12,08 €", "Zone D - 11,48 €"],
+    '2012': ["Zone A - 13,28 €", "Zone B - 12,90 €", "Zone C - 12,08 €", "Zone D - 11,48 €"]
+  };
 
   String _year = '2015';
   String _zone = 'Zone A - 13,85 €';
@@ -35,6 +40,20 @@ class Parameters {
     _zone = value;
     debug();
   }
+
+  // Create and return List<String> relevant to selected year
+  get zoneList {
+    return _zoneList;
+
+//    List<String> zoneList = _zoneListMap.keys;
+//    _zoneListMap.forEach((k,v) {
+//        if (k == zone)
+//          return v;
+//    });
+
+  }
+
+
 
   get partRo {
     return _partRo;

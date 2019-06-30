@@ -144,9 +144,10 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
 
         }else{ //horizontal orientation means Row with Column inside
           // Modified to have label on the same line
-          content.add(Row(children: <Widget>[
+          content.add(Row(
+              children: <Widget>[
             cb,
-            SizedBox(width: 0.0),
+            //SizedBox(width: 0.0),
             t,
           ]));
 
