@@ -157,11 +157,11 @@ class Ambulance {
 
   //TODO implement correctly this method
   setSelectedSupp2(List<String> checked){
-    for (int i ; i < supplementList.length - 1; i++){
-      for (int j ; j < checked.length - 1; j++) {
-        (supplementList.contains(checked[j])) ? selectedSupplementList[i] = true : selectedSupplementList[i]=false;
-      }
-    };
+//    for (int i ; i < supplementList.length - 1; i++){
+//      for (int j ; j < checked.length - 1; j++) {
+//        (supplementList.contains(checked[j])) ? selectedSupplementList[i] = true : selectedSupplementList[i]=false;
+//      }
+//    };
   }
   computeTotal() {
     // Simulate Random value
@@ -173,7 +173,6 @@ class Ambulance {
   debug() {
     print ('------------------------');
     print ('Day:' + _day);
-    print ('Forfait:' + _flatRate);
     var i=0;
     String out ="";
     selectedSupplementList.forEach((v) {
@@ -190,7 +189,7 @@ class Ambulance {
     print(out);
     print ('GardeCentre15:' + _gardeCentre15.toString());
     print ('Aller/Retour:' + _allerRetour.toString());
-
+    print ('Forfait:' + _flatRate);
     out = "";
     i=0;
     selectedflatRateList.forEach((v) {
