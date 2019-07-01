@@ -3,7 +3,7 @@
  * @see  http://liburgence.aidesnsoft.fr/swagger/ui/index
  * http://liburgence.aidesnsoft.fr/DoCalcul (API REST/JSON en POST)
  */
-class CalculsTaxi {
+class TaxiDoCalculResponse {
   List<Messages> messages;
   int minutesDeNuit;
   int minutesFeries;
@@ -58,7 +58,7 @@ class CalculsTaxi {
   int cptMontantSuppNonRemb;
   int cptMontantPeages;
 
-  CalculsTaxi(
+  TaxiDoCalculResponse(
       {this.messages,
         this.minutesDeNuit,
         this.minutesFeries,
@@ -113,7 +113,7 @@ class CalculsTaxi {
         this.cptMontantSuppNonRemb,
         this.cptMontantPeages});
 
-  CalculsTaxi.fromJson(Map<String, dynamic> json) {
+  TaxiDoCalculResponse.fromJson(Map<String, dynamic> json) {
     if (json['Messages'] != null) {
       messages = new List<Messages>();
       json['Messages'].forEach((v) {
