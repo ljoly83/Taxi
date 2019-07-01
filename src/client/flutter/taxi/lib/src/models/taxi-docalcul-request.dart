@@ -18,14 +18,14 @@ class BaseResponse extends Object {
 }
 
 @JsonSerializable()
-class TaxiDoCalculRequest {
+class TaxiDoCalculRequest extends Object {
   String guidConvention;
   Transport tranport;
   DetailSimultaneousTransport detailSimultaneousTransport;
   Param param;
 }
 
-class Transport {
+class Transport extends Object {
   String dateHeureDepart;	//date-time
   String dateHeureArrivee; //date-time
   String dateHeureArriveeAller; //date-time
@@ -77,7 +77,7 @@ class Transport {
   bool calculAuTransport;
 }
 
-class DetailSimultaneousTransport {
+class DetailSimultaneousTransport extends Object {
   List<DetailSimultaneousTransport> listeLignesDetailTransportSimultane;
   int diviseurPeage;
   int diviseurPriseEnCharge;
@@ -85,7 +85,7 @@ class DetailSimultaneousTransport {
   double pourcentagePriseEnCharge;
 }
 
-class Param {
+class Param extends Object {
   String heureDebutNuit; //date-time
   String heureFinNuit; //date-time
   String pUAttenteNuit; //date-time
