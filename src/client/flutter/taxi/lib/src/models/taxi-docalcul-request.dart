@@ -17,6 +17,14 @@ class BaseResponse extends Object {
   Param param;
 }
 
+BaseResponse(String guidConvention, Transport transport, DetailSimultaneousTransport detailSimultaneousTransport, Param param) {
+  this.guidConvention = guidConvention;
+  this.tranport = transport;
+  this.detailSimultaneousTransport = detailSimultaneousTransport;
+  this.param = param;
+)
+
+
 @JsonSerializable()
 class TaxiDoCalculRequest extends Object {
   String guidConvention;
