@@ -9,19 +9,16 @@ part 'taxi-docalcul-request.g.dart';
 
 @JsonSerializable()
 class BaseResponse extends Object {
-  String guidConvention;
-  @JsonKey(name: 'transport')
+  @JsonKey(name: 'Guid')
+  String guid;
+  @JsonKey(name: 'Transport')
   Transport transport;
-  @JsonKey(name: 'detailTransportSimultane')
-  DetailSimultaneousTransport detailSimultaneousTransport;
-  @JsonKey(name: 'param')
+  @JsonKey(name: 'Param')
   Param param;
 
-  BaseResponse(String guidConvention, Transport transport,
-      DetailSimultaneousTransport detailSimultaneousTransport, Param param) {
-    this.guidConvention = guidConvention;
+  BaseResponse(String guid, Transport transport, Param param) {
+    this.guid = guid;
     this.transport = transport;
-    this.detailSimultaneousTransport = detailSimultaneousTransport;
     this.param = param;
   }
 
@@ -31,16 +28,15 @@ class BaseResponse extends Object {
 
 @JsonSerializable()
 class TaxiDoCalculRequest extends Object {
-  String guidConvention;
+  @JsonKey(name: 'Guid')
+  String guid;
   Transport tranport;
-  DetailSimultaneousTransport detailSimultaneousTransport;
   Param param;
 
-  TaxiDoCalculRequest(String guidConvention,Transport tranport,
+  TaxiDoCalculRequest(String guid,Transport tranport,
   DetailSimultaneousTransport detailSimultaneousTransport,Param param){
-   this.guidConvention = guidConvention;
+   this.guid = guid;
    this.tranport = tranport;
-   this.detailSimultaneousTransport = detailSimultaneousTransport;
    this.param = param;
   }
 
@@ -50,179 +46,218 @@ class TaxiDoCalculRequest extends Object {
 
 @JsonSerializable()
 class Transport extends Object {
-  String dateHeureDepart; //date-time "2019-06-25T09:00:00"
-  String dateHeureArrivee; //date-time
-  String dateHeureArriveeAller; //date-time
-  String dateHeureDepartRetour; //date-time
-  String dateHeureDebutAttente; //date-time
-  double montantSupplement1;
-  double montantSupplement2;
-  double montantTotalSupplementNonRemboursable;
-  double montantPeageNonRemise;
-  int nombrePersonnes;
-  String dureeAttente;
-  double montantCompteur;
-  bool cocheTarifA;
-  bool cocheTarifB;
-  bool cocheTarifC;
-  bool cocheTarifD;
-  int forfait;
-  int nombreKmsA;
-  int nombreKmsB;
-  int nombreKmsC;
-  int nombreKmsD;
-  int nombreKmsApprocheA;
-  int nombreKmsApprocheB;
-  int nombreKmsApprocheC;
-  int nombreKmsApprocheD;
-  bool hospitalisation;
-  double montantPriseEnCharge;
-  bool prendreEnComptePriseEnCharge;
-  String allerRetour;
-  bool appliquerSuppplementTPMR;
-  double montantCompteurApproche;
-  int nombreKmsCompteur;
-  bool entreeHospitalisation;
-  bool sortieHospitalisation;
-  double pCRemise;
-  bool demiCourse;
-  double montantMarcheLente;
-  double montantSupplementSansAbattement;
+  String DateHeureDepart;
+  String DateHeureArrivee;
+  String DateHeureArriveeAller;
+  String DateHeureDepartRetour;
+  String DateHeureDebutAttente;
+  double MontantSupplement1;
+  double MontantSupplement2;
+  double MontantTotalSupplementNonRemboursable;
+  double MontantPeageNonRemise;
+  int NombrePersonnes;
+  String DureeAttente;
+  double MontantCompteur;
+  bool CocheTarifA;
+  bool CocheTarifB;
+  bool CocheTarifC;
+  bool CocheTarifD;
+  int Forfait;
+  int NombreKmsA;
+  int NombreKmsB;
+  int NombreKmsC;
+  int NombreKmsD;
+  int NombreKmsApprocheA;
+  int NombreKmsApprocheB;
+  int NombreKmsApprocheC;
+  int NombreKmsApprocheD;
+  bool Hospitalisation;
+  double MontantPriseEnCharge;
+  bool PrendreEnComptePriseEnCharge;
+  String AllerRetour;
+  bool AppliquerSuppplementTPMR;
+  double MontantCompteurApproche;
+  int NombreKmsCompteur;
+  bool EntreeHospitalisation;
+  bool SortieHospitalisation;
+  double PCRemise;
+  bool DemiCourse;
+  double MontantMarcheLente;
+  double MontantSupplementSansAbattement;
   bool isFerie;
-  bool telepeage;
-  bool longueDistance;
-  bool serie;
-  bool accordPrealable;
-  bool isNeigeVerglas;
-  int numeroPersonneSimultane;
-  bool moinsDe50PourCentDeTrajetEnCommun;
-  String attenteAssocie;
-  int nombreKmsAssocie;
-  bool calculAuTransport;
+  bool Telepeage;
+  bool LongueDistance;
+  bool Serie;
+  bool AccordPrealable;
+  bool IsNeigeVerglas;
+  int NumeroPersonneSimultane;
+  bool MoinsDe50PourCentDeTrajetEnCommun;
+  String AttenteAssocie;
+  int NombreKmsAssocie;
+  bool CalculAuTransport;
+  @JsonKey(name: 'DetailTransportSimultane')
+  DetailSimultaneousTransport detailSimultaneousTransport;
+  List<LigneDetailTransportSimultane> listeLignesDetailTransportSimultane;
+  int DiviseurPeage;
+  int DiviseurPriseEnCharge;
+  double PourcentagePeage;
+  double PourcentagePriseEnCharge;
 
   Transport(
-  String dateHeureDepart,
-  String dateHeureArrivee,
-  String dateHeureArriveeAller,
-  String dateHeureDepartRetour,
-  String dateHeureDebutAttente,
-  double montantSupplement1,
-  double montantSupplement2,
-  double montantTotalSupplementNonRemboursable,
-  double montantPeageNonRemise,
-  int nombrePersonnes,
-  String dureeAttente,
-  double montantCompteur,
-  bool cocheTarifA,
-  bool cocheTarifB,
-  bool cocheTarifC,
-  bool cocheTarifD,
-  int forfait,
-  int nombreKmsA,
-  int nombreKmsB,
-  int nombreKmsC,
-  int nombreKmsD,
-  int nombreKmsApprocheA,
-  int nombreKmsApprocheB,
-  int nombreKmsApprocheC,
-  int nombreKmsApprocheD,
-  bool hospitalisation,
-  double montantPriseEnCharge,
-  bool prendreEnComptePriseEnCharge,
-  String allerRetour,
-  bool appliquerSuppplementTPMR,
-  double montantCompteurApproche,
-  int nombreKmsCompteur,
-  bool entreeHospitalisation,
-  bool sortieHospitalisation,
-  double pCRemise,
-  bool demiCourse,
-  double montantMarcheLente,
-  double montantSupplementSansAbattement,
-  bool isFerie,
-  bool telepeage,
-  bool longueDistance,
-  bool serie,
-  bool accordPrealable,
-  bool isNeigeVerglas,
-  int numeroPersonneSimultane,
-  bool moinsDe50PourCentDeTrajetEnCommun,
-  String attenteAssocie,
-  int nombreKmsAssocie,
-  bool calculAuTransport){
-    this.dateHeureDepart = dateHeureDepart;
-    this.dateHeureArrivee = dateHeureArrivee;
-    this.dateHeureArriveeAller = dateHeureArriveeAller;
-    this.dateHeureDepartRetour = dateHeureDepartRetour;
-    this.dateHeureDebutAttente = dateHeureDebutAttente;
-    this.montantSupplement1 = montantSupplement1;
-    this.montantSupplement2 = montantSupplement2;
-    this.montantTotalSupplementNonRemboursable = montantTotalSupplementNonRemboursable;
-    this.montantPeageNonRemise = montantPeageNonRemise;
-    this.nombrePersonnes = nombrePersonnes;
-    this.dureeAttente = dureeAttente;
-    this.montantCompteur = montantCompteur;
-    this.cocheTarifA = cocheTarifA;
-    this.cocheTarifB = cocheTarifB;
-    this.cocheTarifC = cocheTarifC;
-    this.cocheTarifD = cocheTarifD;
-    this.forfait = forfait;
-    this.nombreKmsA = nombreKmsA;
-    this.nombreKmsB = nombreKmsB;
-    this.nombreKmsC = nombreKmsC;
-    this.nombreKmsD = nombreKmsD;
-    this.nombreKmsApprocheA = nombreKmsApprocheA;
-    this.nombreKmsApprocheB = nombreKmsApprocheB;
-    this.nombreKmsApprocheC = nombreKmsApprocheC;
-    this.nombreKmsApprocheD = nombreKmsApprocheD;
-    this.hospitalisation = hospitalisation;
-    this.montantPriseEnCharge = montantPriseEnCharge;
-    this.prendreEnComptePriseEnCharge = prendreEnComptePriseEnCharge;
-    this.allerRetour = allerRetour;
-    this.appliquerSuppplementTPMR = appliquerSuppplementTPMR;
-    this.montantCompteurApproche = montantCompteurApproche;
-    this.nombreKmsCompteur = nombreKmsCompteur;
-    this.entreeHospitalisation = entreeHospitalisation;
-    this.sortieHospitalisation = sortieHospitalisation;
-    this.pCRemise = pCRemise;
-    this.demiCourse = demiCourse;
-    this.montantMarcheLente = montantMarcheLente;
-    this.montantSupplementSansAbattement = montantSupplementSansAbattement;
+      String DateHeureDepart,
+      String DateHeureArrivee,
+      String DateHeureArriveeAller,
+      String DateHeureDepartRetour,
+      String DateHeureDebutAttente,
+      double MontantSupplement1,
+      double MontantSupplement2,
+      double MontantTotalSupplementNonRemboursable,
+      double MontantPeageNonRemise,
+      int NombrePersonnes,
+      String DureeAttente,
+      double MontantCompteur,
+      bool CocheTarifA,
+      bool CocheTarifB,
+      bool CocheTarifC,
+      bool CocheTarifD,
+      int Forfait,
+      int NombreKmsA,
+      int NombreKmsB,
+      int NombreKmsC,
+      int NombreKmsD,
+      int NombreKmsApprocheA,
+      int NombreKmsApprocheB,
+      int NombreKmsApprocheC,
+      int NombreKmsApprocheD,
+      bool Hospitalisation,
+      double MontantPriseEnCharge,
+      bool PrendreEnComptePriseEnCharge,
+      String AllerRetour,
+      bool AppliquerSuppplementTPMR,
+      double MontantCompteurApproche,
+      int NombreKmsCompteur,
+      bool EntreeHospitalisation,
+      bool SortieHospitalisation,
+      double PCRemise,
+      bool DemiCourse,
+      double MontantMarcheLente,
+      double MontantSupplementSansAbattement,
+      bool isFerie,
+      bool Telepeage,
+      bool LongueDistance,
+      bool Serie,
+      bool AccordPrealable,
+      bool IsNeigeVerglas,
+      int NumeroPersonneSimultane,
+      bool MoinsDe50PourCentDeTrajetEnCommun,
+      String AttenteAssocie,
+      int NombreKmsAssocie,
+      bool CalculAuTransport,
+      @JsonKey(name: 'DetailTransportSimultane')
+      DetailSimultaneousTransport detailSimultaneousTransport,
+      List<LigneDetailTransportSimultane> listeLignesDetailTransportSimultane,
+      ){
+    this.DateHeureDepart = DateHeureDepart;
+    this.DateHeureArrivee = DateHeureArrivee;
+    this.DateHeureArriveeAller = DateHeureArriveeAller;
+    this.DateHeureDepartRetour = DateHeureDepartRetour;
+    this.DateHeureDebutAttente = DateHeureDebutAttente;
+    this.MontantSupplement1 = MontantSupplement1;
+    this.MontantSupplement2 = MontantSupplement2;
+    this.MontantTotalSupplementNonRemboursable = MontantTotalSupplementNonRemboursable;
+    this.MontantPeageNonRemise = MontantPeageNonRemise;
+    this.NombrePersonnes = NombrePersonnes;
+    this.DureeAttente = DureeAttente;
+    this.MontantCompteur = MontantCompteur;
+    this.CocheTarifA = CocheTarifA;
+    this.CocheTarifB = CocheTarifB;
+    this.CocheTarifC = CocheTarifC;
+    this.CocheTarifD = CocheTarifD;
+    this.Forfait = Forfait;
+    this.NombreKmsA = NombreKmsA;
+    this.NombreKmsB = NombreKmsB;
+    this.NombreKmsC = NombreKmsC;
+    this.NombreKmsD = NombreKmsD;
+    this.NombreKmsApprocheA = NombreKmsApprocheA;
+    this.NombreKmsApprocheB = NombreKmsApprocheB;
+    this.NombreKmsApprocheC = NombreKmsApprocheC;
+    this.NombreKmsApprocheD = NombreKmsApprocheD;
+    this.Hospitalisation = Hospitalisation;
+    this.MontantPriseEnCharge = MontantPriseEnCharge;
+    this.PrendreEnComptePriseEnCharge = PrendreEnComptePriseEnCharge;
+    this.AllerRetour = AllerRetour;
+    this.AppliquerSuppplementTPMR = AppliquerSuppplementTPMR;
+    this.MontantCompteurApproche = MontantCompteurApproche;
+    this.NombreKmsCompteur = NombreKmsCompteur;
+    this.EntreeHospitalisation = EntreeHospitalisation;
+    this.SortieHospitalisation = SortieHospitalisation;
+    this.PCRemise = PCRemise;
+    this.DemiCourse = DemiCourse;
+    this.MontantMarcheLente = MontantMarcheLente;
+    this.MontantSupplementSansAbattement = MontantSupplementSansAbattement;
     this.isFerie = isFerie;
-    this.telepeage = telepeage;
-    this.longueDistance = longueDistance;
-    this.serie = serie;
-    this.accordPrealable = accordPrealable;
-    this.isNeigeVerglas = isNeigeVerglas;
-    this.numeroPersonneSimultane = numeroPersonneSimultane;
-    this.moinsDe50PourCentDeTrajetEnCommun = moinsDe50PourCentDeTrajetEnCommun;
-    this.attenteAssocie = attenteAssocie;
-    this.nombreKmsAssocie = nombreKmsAssocie;
-    this.calculAuTransport = calculAuTransport;
+    this.Telepeage = Telepeage;
+    this.LongueDistance = LongueDistance;
+    this.Serie = Serie;
+    this.AccordPrealable = AccordPrealable;
+    this.IsNeigeVerglas = IsNeigeVerglas;
+    this.NumeroPersonneSimultane = NumeroPersonneSimultane;
+    this.MoinsDe50PourCentDeTrajetEnCommun = MoinsDe50PourCentDeTrajetEnCommun;
+    this.AttenteAssocie = AttenteAssocie;
+    this.NombreKmsAssocie = NombreKmsAssocie;
+    this.CalculAuTransport = CalculAuTransport;
+    this.detailSimultaneousTransport = detailSimultaneousTransport;
+    this.listeLignesDetailTransportSimultane = listeLignesDetailTransportSimultane;
   }
+
   factory Transport.fromJson(Map<String, dynamic> json) => _$TransportFromJson(json);
   Map<String, dynamic> toJson() => _$TransportToJson(this);
 }
 
+
+@JsonSerializable()
+class LigneDetailTransportSimultane extends Object {
+
+  int NombreKmsA;
+  int NombreKmsB;
+  int NombreKmsC;
+  int NombreKmsD;
+
+  LigneDetailTransportSimultane(
+  int NombreKmsA,
+  int NombreKmsB,
+  int NombreKmsC,
+  int NombreKmsD,
+      ){
+    this.NombreKmsA = NombreKmsA;
+    this.NombreKmsB = NombreKmsB;
+    this.NombreKmsC = NombreKmsC;
+    this.NombreKmsD = NombreKmsD;
+  }
+
+  factory LigneDetailTransportSimultane.fromJson(Map<String, dynamic> json) => _$LigneDetailTransportSimultaneFromJson(json);
+  Map<String, dynamic> toJson() => _$LigneDetailTransportSimultaneToJson(this);
+}
+
 @JsonSerializable()
 class DetailSimultaneousTransport extends Object {
-  @JsonKey(name: 'list') //TODO verifier avec christophe le nom de la clé
-  List<DetailSimultaneousTransport> listeLignesDetailTransportSimultane;
-  int diviseurPeage;
-  int diviseurPriseEnCharge;
-  double pourcentagePeage;
-  double pourcentagePriseEnCharge;
+
+  List<LigneDetailTransportSimultane> ListeLignesDetailTransportSimultane;
+  int DiviseurPeage;
+  int DiviseurPriseEnCharge;
+  double PourcentagePeage;
+  double PourcentagePriseEnCharge;
 
   DetailSimultaneousTransport(
-  int diviseurPeage,
-  int diviseurPriseEnCharge,
-  double pourcentagePeage,
-  double pourcentagePriseEnCharge)
-  {
-    this.diviseurPeage = diviseurPeage;
-    this.diviseurPriseEnCharge = diviseurPriseEnCharge;
-    this.pourcentagePeage = pourcentagePeage;
-    this.pourcentagePriseEnCharge = pourcentagePriseEnCharge;
+  List<LigneDetailTransportSimultane> ListeLignesDetailTransportSimultane,
+  int DiviseurPeage,
+  int DiviseurPriseEnCharge,
+  double PourcentagePeage,
+  double PourcentagePriseEnCharge){
+    this.DiviseurPeage = DiviseurPeage;
+    int DiviseurPriseEnCharge;
+    this.PourcentagePeage = PourcentagePeage;
+    this.PourcentagePriseEnCharge = PourcentagePriseEnCharge;
   }
 
   factory DetailSimultaneousTransport.fromJson(Map<String, dynamic> json) => _$DetailSimultaneousTransportFromJson(json);
@@ -231,19 +266,24 @@ class DetailSimultaneousTransport extends Object {
 
 @JsonSerializable()
 class Param extends Object {
-  String heureDebutNuit; //date-time
-  String heureFinNuit; //date-time
-  String pUAttenteNuit; //date-time
-
-  Param(
-  String heureDebutNuit,
-  String heureFinNuit,
-  String pUAttenteNuit
-  ){
-  this.heureDebutNuit = heureDebutNuit;
-  this.heureFinNuit = heureFinNuit;
-  this.pUAttenteNuit = pUAttenteNuit;
-  }
+  double PCRemiseCD;
+  double TarifMiniPerception;
+  double PUTarifA;
+  double PUTarifB;
+  double PUTarifC;
+  double PUTarifD;
+  double MontantPriseEnCharge;
+  double PUAttente;
+  double PCAbattementSimultane2Personnes;
+  double PCAbattementSimultane3Personnes;
+  bool AppliquerApproche;
+  bool AuCompteur;
+  double PCRemiseIndexation;
+  bool SimultaneeSurPeage;
+  bool AppliquerIndexation;
+  String HeureDebutNuit;
+  String HeureFinNuit;
+  String PUAttenteNuit;
 
   factory Param.fromJson(Map<String, dynamic> json) => _$ParamFromJson(json);
   Map<String, dynamic> toJson() => _$ParamToJson(this);
