@@ -157,7 +157,7 @@ class VSL {
 //      out = out + '- ' + flatRateList[i] +':' + selectedflatRateList[i].toString();
 //      i = i+1;
 //    });
-    print(out);
+//    print(out);
     out = "";
     print ('kms:' + _kms.toString());
     print ('peage:' + _peage.toString());

@@ -19,7 +19,7 @@ class _FacturationState extends State<Facturation> {
   final Map<int, Widget> logoWidgets = const <int, Widget>{
     0: Text('Ambulance'),
     1: Text('VSL'),
-    //2: Text('Taxi'), //TO DO Just uncomment to show the Taxi form
+    2: Text('Taxi'), //TO DO Just (un)comment to show/hide the Taxi form
   };
 
   final Map<int, Widget> icons = <int, Widget>{
@@ -29,12 +29,13 @@ class _FacturationState extends State<Facturation> {
     1: Center(
       child: FacturationVSLForm(),
     ),
-    2: Center(
-      child: FlutterLogo(
-        colors: Colors.cyan,
-        size: 200.0,
-      ),
-    ),
+//    2: Center(
+//      child: FlutterLogo(
+//        colors: Colors.cyan,
+//        size: 200.0,
+//      ),
+//    ),
+    2: FacturationTaxiForm(),
   };
 
   int sharedValue = 0;

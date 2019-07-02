@@ -89,7 +89,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         Row(
                           children: <Widget>[
                             CheckboxGroup(
-                              //TODO solve default selection storage (lost on screen change)
+                              //TODO? solve default selection storage (lost on screen change)
                               //checked: _ambulance.supplement,
                               orientation: GroupedButtonsOrientation.HORIZONTAL,
                               labels: _ambulance.supplementList,
