@@ -1,4 +1,4 @@
-package com.example.ambulancier;
+package fr.aidesnsoft.lambulancier;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
