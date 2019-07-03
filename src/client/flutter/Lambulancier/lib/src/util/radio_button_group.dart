@@ -57,7 +57,9 @@ class RadioButtonGroup extends StatefulWidget {
     this.disabled,
     this.onChange,
     this.onSelected,
-    this.labelStyle = const TextStyle(),
+    //TODO use MaterialApp theme
+    //this.labelStyle =  Theme.of(context).textTheme.primaryColor,
+    this.labelStyle = TextStyle(color: Color(0xff2F3360)),
     this.activeColor, //defaults to toggleableActiveColor,
     this.orientation = GroupedButtonsOrientation.VERTICAL,
     this.itemBuilder,

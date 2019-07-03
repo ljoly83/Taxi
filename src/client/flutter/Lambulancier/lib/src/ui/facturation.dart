@@ -29,12 +29,6 @@ class _FacturationState extends State<Facturation> {
     1: Center(
       child: FacturationVSLForm(),
     ),
-//    2: Center(
-//      child: FlutterLogo(
-//        colors: Colors.cyan,
-//        size: 200.0,
-//      ),
-//    ),
     2: FacturationTaxiForm(),
   };
 
@@ -46,18 +40,6 @@ class _FacturationState extends State<Facturation> {
       children: <Widget>[
         const Padding(
           padding: EdgeInsets.all(5.0),
-        ),
-        SizedBox(
-          width: 500.0,
-          child: CupertinoSegmentedControl<int>(
-            children: logoWidgets,
-            onValueChanged: (int val) {
-              setState(() {
-                sharedValue = val;
-              });
-            },
-            groupValue: sharedValue,
-          ),
         ),
         Expanded(
           child: Padding(
@@ -96,6 +78,18 @@ class _FacturationState extends State<Facturation> {
               ),
               child: icons[sharedValue],
             ),
+          ),
+        ),
+        SizedBox(
+          width: 500.0,
+          child: CupertinoSegmentedControl<int>(
+            children: logoWidgets,
+            onValueChanged: (int val) {
+              setState(() {
+                sharedValue = val;
+              });
+            },
+            groupValue: sharedValue,
           ),
         ),
       ],

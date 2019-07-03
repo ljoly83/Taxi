@@ -10,13 +10,7 @@ class FacturationAmbulanceForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTitle = 'Formulaire facturation';
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: AmbulanceForm(),
-      ),
-    );
+    return AmbulanceForm();
   }
 }
 
@@ -74,6 +68,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         Row(
                           children: <Widget>[
                             RadioButtonGroup(
+                                labelStyle: Theme.of(context).primaryColor,
                                 picked: _ambulance.day,
                                 orientation:
                                     GroupedButtonsOrientation.HORIZONTAL,
