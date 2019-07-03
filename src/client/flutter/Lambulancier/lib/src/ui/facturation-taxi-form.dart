@@ -77,13 +77,14 @@ class TaxiFormState extends State<TaxiForm> {
               future: futureResponse,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  print('Snapshot has data');
                   return Text("Success !!!");
                 } else if (snapshot.hasError) {
+                  print('Snapshot has error');
                   return Text("${snapshot.error}");
                 }
-
                 // By default, show a loading spinner.
-                return CircularProgressIndicator();
+                return Text("Ready");
               },
             ),
           ),
