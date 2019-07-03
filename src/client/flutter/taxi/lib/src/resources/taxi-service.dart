@@ -23,6 +23,7 @@ class TaxiService {
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON.
       print('Service call to DoCalcul: success');
+      print('Received: ' + response.body);
       return TaxiDoCalculResponse.fromJson(json.decode(response.body));
     } else {
       // If that call was not successful, throw an error.

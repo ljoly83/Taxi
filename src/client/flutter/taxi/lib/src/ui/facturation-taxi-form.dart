@@ -69,8 +69,9 @@ class TaxiFormState extends State<TaxiForm> {
     return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Text("Test du web service DoCalculs"),
           Center(
             child: FutureBuilder<TaxiDoCalculResponse>(
               future: futureResponse,
@@ -93,12 +94,6 @@ class TaxiFormState extends State<TaxiForm> {
                 // Validate returns true if the form is valid, or false
                 // otherwise.
                 sendRequest();
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, display a Snackbar.
-
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
               },
               child: Text('Submit'),
             ),
