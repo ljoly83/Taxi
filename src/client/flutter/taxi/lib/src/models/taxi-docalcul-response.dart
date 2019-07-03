@@ -7,7 +7,7 @@ class TaxiDoCalculResponse {
   List<Messages> messages;
   int minutesDeNuit;
   int minutesFeries;
-  int pCRemise;
+  double pCRemise;
   TaxiJustificatifCalculs taxiJustificatifCalculs;
   int montantTotalAttente;
   bool cocheTarifA;
@@ -267,7 +267,7 @@ class TaxiJustificatifCalculs {
   int justificatifDistance;
   String descriptifCalcul;
   int qteMinPerc;
-  int pUMinPerc;
+  double pUMinPerc;
   List<TabTaxiJustificatifCalculs> tabTaxiJustificatifCalculs;
 
   TaxiJustificatifCalculs(
@@ -307,7 +307,7 @@ class TaxiJustificatifCalculs {
 
 class TabTaxiJustificatifCalculs {
   int qtePriseCharge;
-  int pUPriseCharge;
+  double pUPriseCharge;
   int qteTarifA;
   int pUTarifA;
   int qteTarifB;
@@ -320,7 +320,7 @@ class TabTaxiJustificatifCalculs {
   int pUAttente;
   String remiseTarif;
   int qteMinPerc;
-  int pUMinPerc;
+  double pUMinPerc;
   int totalMinPerc;
   int mNTPriseCharge;
   int mNTTransportSpeciaux;

@@ -54,12 +54,12 @@ class TaxiFormState extends State<TaxiForm> {
     // For test
     _guidConvention = "135abd6b-c197-4037-a929-00233a7fece9";
     _ligneDetailTransportSimultane = new LigneDetailTransportSimultane(1,2,3,4);
-    //_listLigneDetailTransportSimultane.add(_ligneDetailTransportSimultane);
+    _listLigneDetailTransportSimultane = [];
     _detailSimultaneousTransport = new DetailSimultaneousTransport(_listLigneDetailTransportSimultane, 1,2,1.0,1.1);
-    _param = new Param(1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,false,false,12.36,false,false,"20h00","20h00","20h02");
-    _transport = new Transport("2019-06-25T09:00:00","2019-06-25T09:00:00","2019-06-25T09:00:00","2019-06-25T09:00:00","2019-06-25T09:00:00",1.0,2.0,3.0,4.0,1,"5h",20.69,true,false,false,false,1,2,3,4,5,6,7,8,9,true,205.23,false,"AR",false,89.30,158,true,false,21.69,false,10.20,15.16,false,false,false,false,false,false,1,false,"oui",59,false,_detailSimultaneousTransport,_listLigneDetailTransportSimultane);
-    _request = new TaxiDoCalculRequest(_guidConvention,_transport, _param);
-    _service.doCalculs(_request);
+    _param = new Param(1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,false,false,12.36,false,false,"20:00","20:00",32.8);
+    _transport = new Transport("2019-06-25T09:00:00","2019-06-25T09:00:00","2019-06-25T09:00:00","2019-06-25T09:00:00","2019-06-25T09:00:00",1.0,2.0,3.0,4.0,1,"05:00",20.69,true,false,false,false,1,2,3,4,5,6,7,8,9,true,205.23,false,"AR",false,89.30,158,true,false,21.69,false,10.20,15.16,false,false,false,false,false,false,1,false,"oui",59,false,_detailSimultaneousTransport);
+    _request = new TaxiDoCalculRequest(_guidConvention,_param, _transport );
+    futureResponse = _service.doCalculs(_request);
   }
 
 

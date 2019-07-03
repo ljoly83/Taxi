@@ -9,38 +9,38 @@ part of 'taxi-docalcul-request.dart';
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) {
   return BaseResponse(
       json['Guid'] as String,
-      json['Transport'] == null
-          ? null
-          : Transport.fromJson(json['Transport'] as Map<String, dynamic>),
       json['Param'] == null
           ? null
-          : Param.fromJson(json['Param'] as Map<String, dynamic>));
+          : Param.fromJson(json['Param'] as Map<String, dynamic>),
+      json['Transport'] == null
+          ? null
+          : Transport.fromJson(json['Transport'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
       'Guid': instance.guid,
-      'Transport': instance.transport,
-      'Param': instance.param
+      'Param': instance.param,
+      'Transport': instance.transport
     };
 
 TaxiDoCalculRequest _$TaxiDoCalculRequestFromJson(Map<String, dynamic> json) {
   return TaxiDoCalculRequest(
       json['Guid'] as String,
-      json['tranport'] == null
+      json['Param'] == null
           ? null
-          : Transport.fromJson(json['tranport'] as Map<String, dynamic>),
-      json['param'] == null
+          : Param.fromJson(json['Param'] as Map<String, dynamic>),
+      json['Transport'] == null
           ? null
-          : Param.fromJson(json['param'] as Map<String, dynamic>));
+          : Transport.fromJson(json['Transport'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$TaxiDoCalculRequestToJson(
         TaxiDoCalculRequest instance) =>
     <String, dynamic>{
       'Guid': instance.guid,
-      'tranport': instance.tranport,
-      'param': instance.param
+      'Param': instance.param,
+      'Transport': instance.tranport
     };
 
 Transport _$TransportFromJson(Map<String, dynamic> json) {
@@ -97,18 +97,7 @@ Transport _$TransportFromJson(Map<String, dynamic> json) {
       json['DetailTransportSimultane'] == null
           ? null
           : DetailSimultaneousTransport.fromJson(
-              json['DetailTransportSimultane'] as Map<String, dynamic>),
-      (json['listeLignesDetailTransportSimultane'] as List)
-          ?.map((e) => e == null
-              ? null
-              : LigneDetailTransportSimultane.fromJson(
-                  e as Map<String, dynamic>))
-          ?.toList())
-    ..DiviseurPeage = json['DiviseurPeage'] as int
-    ..DiviseurPriseEnCharge = json['DiviseurPriseEnCharge'] as int
-    ..PourcentagePeage = (json['PourcentagePeage'] as num)?.toDouble()
-    ..PourcentagePriseEnCharge =
-        (json['PourcentagePriseEnCharge'] as num)?.toDouble();
+              json['DetailTransportSimultane'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$TransportToJson(Transport instance) => <String, dynamic>{
@@ -164,13 +153,7 @@ Map<String, dynamic> _$TransportToJson(Transport instance) => <String, dynamic>{
       'AttenteAssocie': instance.AttenteAssocie,
       'NombreKmsAssocie': instance.NombreKmsAssocie,
       'CalculAuTransport': instance.CalculAuTransport,
-      'DetailTransportSimultane': instance.detailSimultaneousTransport,
-      'listeLignesDetailTransportSimultane':
-          instance.listeLignesDetailTransportSimultane,
-      'DiviseurPeage': instance.DiviseurPeage,
-      'DiviseurPriseEnCharge': instance.DiviseurPriseEnCharge,
-      'PourcentagePeage': instance.PourcentagePeage,
-      'PourcentagePriseEnCharge': instance.PourcentagePriseEnCharge
+      'DetailTransportSimultane': instance.detailSimultaneousTransport
     };
 
 LigneDetailTransportSimultane _$LigneDetailTransportSimultaneFromJson(
@@ -236,7 +219,7 @@ Param _$ParamFromJson(Map<String, dynamic> json) {
       json['AppliquerIndexation'] as bool,
       json['HeureDebutNuit'] as String,
       json['HeureFinNuit'] as String,
-      json['PUAttenteNuit'] as String);
+      (json['PUAttenteNuit'] as num)?.toDouble());
 }
 
 Map<String, dynamic> _$ParamToJson(Param instance) => <String, dynamic>{

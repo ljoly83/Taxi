@@ -1,4 +1,6 @@
+import '../resources/app-config.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 /**
  * Model class for register-form.dart
  */
@@ -19,7 +21,7 @@ class User {
   }
 
   _launchURL() async {
-    String destMail = 'joly.laurent@gmail.com';
+    String destMail = REGISTRATION_RECEVE_MAIL;
     String titreMail = 'Enregistrement de compte';
     String contenuEmail = 'Merci de prendre en compte mon email afin \n';
     contenuEmail += 'de me faire parvenir les nouveautés et toutes informations concernant vos logiciels et services.\n\n';

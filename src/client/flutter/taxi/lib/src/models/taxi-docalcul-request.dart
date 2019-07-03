@@ -11,12 +11,12 @@ part 'taxi-docalcul-request.g.dart';
 class BaseResponse extends Object {
   @JsonKey(name: 'Guid')
   String guid;
-  @JsonKey(name: 'Transport')
-  Transport transport;
   @JsonKey(name: 'Param')
   Param param;
+  @JsonKey(name: 'Transport')
+  Transport transport;
 
-  BaseResponse(String guid, Transport transport, Param param) {
+  BaseResponse(String guid, Param param, Transport transport ) {
     this.guid = guid;
     this.transport = transport;
     this.param = param;
@@ -31,13 +31,15 @@ class BaseResponse extends Object {
 class TaxiDoCalculRequest extends Object {
   @JsonKey(name: 'Guid')
   String guid;
-  Transport tranport;
+  @JsonKey(name: 'Param')
   Param param;
+  @JsonKey(name: 'Transport')
+  Transport tranport;
 
-  TaxiDoCalculRequest(String guid, Transport tranport, Param param) {
+  TaxiDoCalculRequest(String guid, Param param, Transport tranport) {
     this.guid = guid;
-    this.tranport = tranport;
     this.param = param;
+    this.tranport = tranport;
   }
 
   factory TaxiDoCalculRequest.fromJson(Map<String, dynamic> json) =>
@@ -98,11 +100,6 @@ class Transport extends Object {
   bool CalculAuTransport;
   @JsonKey(name: 'DetailTransportSimultane')
   DetailSimultaneousTransport detailSimultaneousTransport;
-  List<LigneDetailTransportSimultane> listeLignesDetailTransportSimultane;
-  int DiviseurPeage;
-  int DiviseurPriseEnCharge;
-  double PourcentagePeage;
-  double PourcentagePriseEnCharge;
 
   Transport(
     String DateHeureDepart,
@@ -155,8 +152,7 @@ class Transport extends Object {
     int NombreKmsAssocie,
     bool CalculAuTransport,
     @JsonKey(name: 'DetailTransportSimultane')
-        DetailSimultaneousTransport detailSimultaneousTransport,
-    List<LigneDetailTransportSimultane> listeLignesDetailTransportSimultane,
+    DetailSimultaneousTransport detailSimultaneousTransport,
   ) {
     this.DateHeureDepart = DateHeureDepart;
     this.DateHeureArrivee = DateHeureArrivee;
@@ -209,8 +205,6 @@ class Transport extends Object {
     this.NombreKmsAssocie = NombreKmsAssocie;
     this.CalculAuTransport = CalculAuTransport;
     this.detailSimultaneousTransport = detailSimultaneousTransport;
-    this.listeLignesDetailTransportSimultane =
-        listeLignesDetailTransportSimultane;
   }
 
   factory Transport.fromJson(Map<String, dynamic> json) =>
@@ -256,8 +250,9 @@ class DetailSimultaneousTransport extends Object {
       int DiviseurPriseEnCharge,
       double PourcentagePeage,
       double PourcentagePriseEnCharge) {
+    this.ListeLignesDetailTransportSimultane = ListeLignesDetailTransportSimultane == null ? [] : ListeLignesDetailTransportSimultane;
     this.DiviseurPeage = DiviseurPeage;
-    int DiviseurPriseEnCharge;
+    this.DiviseurPriseEnCharge = DiviseurPriseEnCharge;
     this.PourcentagePeage = PourcentagePeage;
     this.PourcentagePriseEnCharge = PourcentagePriseEnCharge;
   }
@@ -286,7 +281,7 @@ class Param extends Object {
   bool AppliquerIndexation;
   String HeureDebutNuit;
   String HeureFinNuit;
-  String PUAttenteNuit;
+  double PUAttenteNuit;
 
   Param(
       double PCRemiseCD,
@@ -306,7 +301,7 @@ class Param extends Object {
       bool AppliquerIndexation,
       String HeureDebutNuit,
       String HeureFinNuit,
-      String PUAttenteNuit) {
+      double PUAttenteNuit) {
     this.PCRemiseCD = PCRemiseCD;
     this.TarifMiniPerception = TarifMiniPerception;
     this.PUTarifA = PUTarifA;
