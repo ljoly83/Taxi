@@ -84,7 +84,7 @@ class TaxiFormState extends State<TaxiForm> {
                   return Text("${snapshot.error}");
                 }
                 // By default, show a loading spinner.
-                return Text("Ready");
+                return Text("");
               },
             ),
           ),
