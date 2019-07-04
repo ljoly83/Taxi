@@ -58,8 +58,8 @@ class _AppState extends State<App> {
           accentColor: Colors.cyan[600],
           backgroundColor: Colors.white,
 
-
           toggleableActiveColor: Color(0xff2F3360),
+          unselectedWidgetColor:  Colors.black,
 
           // Define the default font family.
           fontFamily: 'Montserrat',

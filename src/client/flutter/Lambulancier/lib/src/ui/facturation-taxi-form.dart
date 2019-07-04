@@ -9,13 +9,8 @@ class FacturationTaxiForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTitle = 'Formulaire facturation';
 
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: TaxiForm(),
-      ),
-    );
+    return TaxiForm();
+
   }
 }
 
@@ -71,17 +66,19 @@ class TaxiFormState extends State<TaxiForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text("Test du web service DoCalculs"),
+          Text("Test du web service DoCalculs", style: TextStyle(
+              color: Colors.black,
+              fontSize: 15)),
           Center(
             child: FutureBuilder<TaxiDoCalculResponse>(
               future: futureResponse,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   print('Snapshot has data');
-                  return Text("Success !!!");
+                  return Text("Success !!!", style: Theme.of(context).textTheme.display1);
                 } else if (snapshot.hasError) {
                   print('Snapshot has error');
-                  return Text("${snapshot.error}");
+                  return Text("${snapshot.error}", style: Theme.of(context).textTheme.display1);
                 }
                 // By default, show a loading spinner.
                 return Text("");

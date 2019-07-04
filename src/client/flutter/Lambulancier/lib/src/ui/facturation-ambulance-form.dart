@@ -31,10 +31,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
   TextEditingController _RoController;
   TextEditingController _RcController;
 
-  // Theme.of(context).textTheme.display1 raise a error
-  // Define style here
-  TextStyle _style =
-      TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
 
   // Method called at each Frame enter
   @override
@@ -68,7 +64,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         Row(
                           children: <Widget>[
                             RadioButtonGroup(
-                                labelStyle: Theme.of(context).primaryColor,
+                                labelStyle: Theme.of(context).textTheme.display2,
                                 picked: _ambulance.day,
                                 orientation:
                                     GroupedButtonsOrientation.HORIZONTAL,
@@ -86,6 +82,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                             CheckboxGroup(
                               //TODO? solve default selection storage (lost on screen change)
                               //checked: _ambulance.supplement,
+                              labelStyle: Theme.of(context).textTheme.display2,
                               orientation: GroupedButtonsOrientation.HORIZONTAL,
                               labels: _ambulance.supplementList,
                               onChange: (bool isChecked, String label,
@@ -105,6 +102,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Checkbox(
+
                                   value: _ambulance.gardeCentre15,
                                   onChanged: (bool value) {
                                     setState(() {
@@ -112,13 +110,14 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Garde Centre 15"),
+                                Text("Garde Centre 15", style: Theme.of(context).textTheme.display2),
                               ],
                             ),
                             // [Tuesday] checkbox
                             Row(
                               children: <Widget>[
                                 Checkbox(
+                                  activeColor: Theme.of(context).primaryColor,
                                   value: _ambulance.allerRetour,
                                   onChanged: (bool value) {
                                     setState(() {
@@ -126,7 +125,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Aller/Retour"),
+                                Text("Aller/Retour", style: Theme.of(context).textTheme.display2),
                               ],
                             ),
                           ],
@@ -135,6 +134,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         Row(
                           children: <Widget>[
                             RadioButtonGroup(
+                              labelStyle: Theme.of(context).textTheme.display2,
                               picked: _ambulance.flatRate,
                               orientation: GroupedButtonsOrientation.HORIZONTAL,
                               labels: _ambulance.flatRateList,
@@ -158,7 +158,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
-                                        labelText: 'Kms', labelStyle: _style),
+                                        labelText: 'Kms', labelStyle: Theme.of(context).textTheme.display2),
                                     onSubmitted: (val) => setState(
                                         () => _ambulance.kms = int.parse(val)),
                                   ),
@@ -180,7 +180,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
-                                        labelText: 'Péage', labelStyle: _style),
+                                        labelText: 'Péage', labelStyle: Theme.of(context).textTheme.display2),
                                     onSubmitted: (val) => setState(() =>
                                         _ambulance.peage = int.parse(val)),
                                   ),
@@ -198,7 +198,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Suppléments',
-                                        labelStyle: _style),
+                                        labelStyle: Theme.of(context).textTheme.display2),
                                     onSubmitted: (val) => setState(() =>
                                         _ambulance.supplements =
                                             int.parse(val)),
@@ -223,7 +223,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
-                                        labelStyle: _style),
+                                        labelStyle: Theme.of(context).textTheme.display2),
                                     onChanged: (val) => setState(() {
                                           _param.setPartRo(val);
                                           _RcController =
@@ -249,7 +249,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
-                                        labelStyle: _style),
+                                        labelStyle: Theme.of(context).textTheme.display2),
                                     onChanged: (val) => setState(() {
                                           _param.setPartRc(val);
                                           _RoController =
@@ -269,7 +269,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 16.0, horizontal: 0.0),
+                              vertical: 30.0, horizontal: 0.0),
                           child: Row(
                             children: <Widget>[
                               Flexible(
@@ -279,6 +279,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                   Container(
                                     child: Text("Total",
                                         style: TextStyle(
+                                            color: Colors.black,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 15)),
                                   )
@@ -292,6 +293,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                   Container(
                                     child: Text(_ambulance.total.toString(),
                                         style: TextStyle(
+                                            color: Colors.black,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 15)),
                                   )

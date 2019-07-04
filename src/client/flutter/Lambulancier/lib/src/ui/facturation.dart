@@ -41,6 +41,18 @@ class _FacturationState extends State<Facturation> {
         const Padding(
           padding: EdgeInsets.all(5.0),
         ),
+        SizedBox(
+          width: 500.0,
+          child: CupertinoSegmentedControl<int>(
+            children: logoWidgets,
+            onValueChanged: (int val) {
+              setState(() {
+                sharedValue = val;
+              });
+            },
+            groupValue: sharedValue,
+          ),
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -78,18 +90,6 @@ class _FacturationState extends State<Facturation> {
               ),
               child: icons[sharedValue],
             ),
-          ),
-        ),
-        SizedBox(
-          width: 500.0,
-          child: CupertinoSegmentedControl<int>(
-            children: logoWidgets,
-            onValueChanged: (int val) {
-              setState(() {
-                sharedValue = val;
-              });
-            },
-            groupValue: sharedValue,
           ),
         ),
       ],
