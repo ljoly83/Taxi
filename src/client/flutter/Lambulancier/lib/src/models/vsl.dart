@@ -8,7 +8,7 @@ class VSL {
   List<String> dayList = <String>["Jour","Nuit","Férié"];
   List<bool> selectedDayList = <bool>[true,false,false];
 
-  List<String> flatRateList = <String>["Départ","Prise Ch."];
+  List<String> flatRateList = <String>["Départ","Prise en charge"];
   List<bool> selectedflatRateList = <bool>[true,false];
 
   String _day = 'Jour';

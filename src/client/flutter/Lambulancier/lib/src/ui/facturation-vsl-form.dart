@@ -10,14 +10,7 @@ class FacturationVSLForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTitle = 'Formulaire facturation';
-
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: VSLForm(),
-      ),
-    );
+    return VSLForm();
   }
 }
 
@@ -45,11 +38,6 @@ class VSLFormState extends State<VSLForm> {
   TextEditingController _RoController;
   TextEditingController _RcController;
 
-  // Theme.of(context).textTheme.display1 raise a error
-  // Define style here
-  TextStyle _style =
-      TextStyle(fontSize: 11.0, fontFamily: 'Hind', color: Colors.black);
-
   // Method called at each Frame enter
   @override
   void initState() {
@@ -74,192 +62,197 @@ class VSLFormState extends State<VSLForm> {
           child: Builder(
               builder: (context) => Form(
                   key: _formKey,
-                  child: Column(
-                      children: [
+                  child: Column(children: [
+                    Row(
+                      children: <Widget>[
+                        RadioButtonGroup(
+                          labelStyle: Theme.of(context).textTheme.display2,
+                          picked: _vsl.day,
+                          orientation: GroupedButtonsOrientation.HORIZONTAL,
+                          labels: _vsl.dayList,
+                          onChange: (String label, int index) =>
+                              _vsl.setSelectedDay(index),
+                          onSelected: (String label) => setState(() {
+                                _vsl.day = label;
+                              }),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        // [Monday] checkbox
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            RadioButtonGroup(
-                              picked: _vsl.day,
-                              orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              labels: _vsl.dayList,
-                              onChange: (String label, int index) =>
-                                  _vsl.setSelectedDay(index),
-                              onSelected: (String label) => setState(() {
-                                    _vsl.day = label;
-                                  }),
+                            Checkbox(
+                              value: _vsl.aeroport,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  _vsl.aeroport = value;
+                                });
+                              },
                             ),
+                            Text("Aéroport",
+                                style: Theme.of(context).textTheme.display2),
                           ],
                         ),
+                        // [Tuesday] checkbox
                         Row(
                           children: <Widget>[
-                            // [Monday] checkbox
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Checkbox(
-                                  value: _vsl.aeroport,
-                                  onChanged: (bool value) {
-                                    setState(() {
-                                      _vsl.aeroport = value;
-                                    });
-                                  },
-                                ),
-                                Text("Aéroport"),
-                              ],
+                            Checkbox(
+                              value: _vsl.allerRetour,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  _vsl.allerRetour = value;
+                                });
+                              },
                             ),
-                            // [Tuesday] checkbox
-                            Row(
-                              children: <Widget>[
-                                Checkbox(
-                                  value: _vsl.allerRetour,
-                                  onChanged: (bool value) {
-                                    setState(() {
-                                      _vsl.allerRetour = value;
-                                    });
-                                  },
-                                ),
-                                Text("Aller/Retour"),
-                              ],
-                            ),
+                            Text("Aller/Retour",
+                                style: Theme.of(context).textTheme.display2),
                           ],
                         ),
-                        Row(
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        RadioButtonGroup(
+                          labelStyle: Theme.of(context).textTheme.display2,
+                          picked: _vsl.flatRate,
+                          orientation: GroupedButtonsOrientation.HORIZONTAL,
+                          labels: _vsl.flatRateList,
+                          onChange: (String label, int index) =>
+                              _vsl.setSelectedFlatRate(index),
+                          onSelected: (String label) => setState(() {
+                                _vsl.flatRate = label;
+                              }),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                            // Flexible is need for TextField to be rendered
+                            child: Column(
                           children: <Widget>[
-                            RadioButtonGroup(
-                              picked: _vsl.flatRate,
-                              orientation: GroupedButtonsOrientation.HORIZONTAL,
-                              labels: _vsl.flatRateList,
-                              onChange: (String label, int index) =>
-                                  _vsl.setSelectedFlatRate(index),
-                              onSelected: (String label) => setState(() {
-                                    _vsl.flatRate = label;
-                                  }),
-                            ),
+                            Container(
+                              child: TextField(
+                                style: TextStyle(color: Colors.black),
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    labelText: 'Kms',
+                                    labelStyle:
+                                        Theme.of(context).textTheme.display2),
+                                onSubmitted: (val) =>
+                                    setState(() => _vsl.kms = int.parse(val)),
+                              ),
+                            )
+                            //container
                           ],
-                        ),
-                        Row(
+                        ))
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                            // Flexible is need for TextFormField to be rendered
+                            child: Column(
                           children: <Widget>[
-                            Flexible(
-                                // Flexible is need for TextField to be rendered
-                                child: Column(
-                              children: <Widget>[
-                                Container(
-                                  child: TextField(
-                                    style: TextStyle(color: Colors.black),
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                        labelText: 'Kms', labelStyle: _style),
-                                    onSubmitted: (val) => setState(
-                                        () => _vsl.kms = int.parse(val)),
-                                  ),
-                                )
-                                //container
-                              ],
-                            ))
+                            Container(
+                              child: TextField(
+                                controller: _RoController,
+                                style: TextStyle(color: Colors.black),
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    labelText: 'Part RO (%)',
+                                    labelStyle:
+                                        Theme.of(context).textTheme.display2),
+                                onChanged: (val) => setState(() {
+                                      _param.setPartRo(val);
+                                      _RcController = new TextEditingController(
+                                          text: _param.partRc.toString());
+                                    }),
+                                onSubmitted: (val) =>
+                                    setState(() => _param.setPartRo(val)),
+                              ),
+                            )
+                            //container
                           ],
-                        ),
-                        Row(
+                        )),
+                        Flexible(
+                            // Flexible is need for TextFormField to be rendered
+                            child: Column(
                           children: <Widget>[
-                            Flexible(
-                              // Flexible is need for TextFormField to be rendered
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextField(
-                                        controller: _RoController,
-                                        style: TextStyle(color: Colors.black),
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Part RO (%)',
-                                            labelStyle: _style),
-                                        onChanged: (val) => setState(
-                                                () {
-                                              _param.setPartRo(val);
-                                              _RcController = new TextEditingController(text: _param.partRc.toString());
-                                            }),
-                                        onSubmitted: (val) => setState(
-                                                () => _param.setPartRo(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                )),
-                            Flexible(
-                              // Flexible is need for TextFormField to be rendered
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      child: TextField(
-                                        controller: _RcController,
-                                        style: TextStyle(color: Colors.black),
-                                        keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
-                                            labelText: 'Part RC (%)',
-                                            labelStyle: _style),
-                                        onChanged: (val) => setState(
-                                                () {
-                                              _param.setPartRc(val);
-                                              _RoController = new TextEditingController(text: _param.partRo.toString());
-                                            }),
-                                        onSubmitted: (val) => setState(
-                                                () => _param.setPartRc(val)),
-                                      ),
-                                    )
-                                    //container
-                                  ],
-                                ))
+                            Container(
+                              child: TextField(
+                                controller: _RcController,
+                                style: TextStyle(color: Colors.black),
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    labelText: 'Part RC (%)',
+                                    labelStyle:
+                                        Theme.of(context).textTheme.display2),
+                                onChanged: (val) => setState(() {
+                                      _param.setPartRc(val);
+                                      _RoController = new TextEditingController(
+                                          text: _param.partRo.toString());
+                                    }),
+                                onSubmitted: (val) =>
+                                    setState(() => _param.setPartRc(val)),
+                              ),
+                            )
+                            //container
                           ],
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 16.0, horizontal: 0.0),
-                          child: Row(
+                        ))
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 0.0),
+                      child: Row(
+                        children: <Widget>[
+                          Flexible(
+                              // Flexible is need for TextField to be rendered
+                              child: Column(
                             children: <Widget>[
-                              Flexible(
-                                  // Flexible is need for TextField to be rendered
-                                  child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: Text("Total",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
-                                  )
-                                  //container
-                                ],
-                              )),
-                              Flexible(
-                                  // Flexible is need for TextField to be rendered
-                                  child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(_vsl.total.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15)),
-                                  )
-                                  //container
-                                ],
-                              )),
-                              Icon(Icons.search),
+                              Container(
+                                child: Text("Total",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15)),
+                              )
+                              //container
                             ],
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          ),
-                        ),
+                          )),
+                          Flexible(
+                              // Flexible is need for TextField to be rendered
+                              child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Text(_vsl.total.toString(),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15)),
+                              )
+                              //container
+                            ],
+                          )),
+                          IconButton(
+                            color: Colors.black,
+                            icon: Icon(Icons.search),
+                            tooltip: 'Voir le détail',
+                            onPressed: () {
+                              setState(() {
 
-//                            Container(
-//                                padding: const EdgeInsets.symmetric(
-//                                vertical: 16.0, horizontal: 16.0),
-//                                child: RaisedButton(
-//                                    onPressed: () {
-//                                      final form = _formKey.currentState;
-//                                      if (form.validate()) {
-//                                        form.save();
-//                                        _ambulance.save();
-//                                      }
-//                                    },
-//                                    child: Text('Envoyer'))),
-                      ]))))
+                              });
+                            },
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                    ),
+                  ]))))
     ]));
   }
 }

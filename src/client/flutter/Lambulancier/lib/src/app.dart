@@ -17,7 +17,6 @@ class _AppState extends State<App> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  // TODO understand why BottomBar loose color after 3 max items.
 
   final List<Widget> _children = [
     Home(),
@@ -53,10 +52,13 @@ class _AppState extends State<App> {
         theme: ThemeData(
           // Define the default brightness and colors.
           brightness: Brightness.dark,
-          primaryColor: Color(0xff2F3360),
+          primaryColor: Color(0xff2F3360), // 0xff2196f3
           //Le bleu foncé du logo
           accentColor: Colors.cyan[600],
           backgroundColor: Colors.white,
+
+          toggleableActiveColor: Color(0xff2196f3),
+          unselectedWidgetColor:  Colors.black,
 
           // Define the default font family.
           fontFamily: 'Montserrat',
@@ -100,7 +102,7 @@ class _AppState extends State<App> {
                 title: Text('S\'enregister'),
               ),
             ],
-            backgroundColor: Color(0xff2F3360), //Theme.of(context).primaryColor not working here ...
+            backgroundColor: Color(0xff2196f3),   // TODO understand why BottomBar loose backgroundColor after 3 max items: Flutter bug
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.white,
             onTap: _onItemTapped,

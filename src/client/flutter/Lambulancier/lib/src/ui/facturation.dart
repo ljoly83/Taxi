@@ -29,12 +29,6 @@ class _FacturationState extends State<Facturation> {
     1: Center(
       child: FacturationVSLForm(),
     ),
-//    2: Center(
-//      child: FlutterLogo(
-//        colors: Colors.cyan,
-//        size: 200.0,
-//      ),
-//    ),
     2: FacturationTaxiForm(),
   };
 

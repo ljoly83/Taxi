@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-//import '../models/item_model.dart';
-//import '../blocs/movies_bloc.dart';
+//import 'package:link/link.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -48,6 +46,15 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
+//        Row(
+//          mainAxisAlignment: MainAxisAlignment.start,
+//          children: [
+//            Link(
+//              child: Text('A link'),
+//              url: 'http://aidesnsoft.fr',
+//            )
+//          ],
+//        ),
         SizedBox(
           width: double.infinity,
           height: 100,

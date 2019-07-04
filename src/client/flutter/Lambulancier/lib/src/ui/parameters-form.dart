@@ -7,14 +7,7 @@ import '../models/parameters.dart';
 class ParametersForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Formulaire facturation';
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: ParamsForm(),
-      ),
-    );
+    return ParamsForm();
   }
 }
 
@@ -68,7 +61,7 @@ class ParamsFormState extends State<ParamsForm> {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[Text("Choix du tarif")],
+                          children: <Widget>[Text("Choix du tarif",style: Theme.of(context).textTheme.display2)],
                         ),
                         DropdownButton<String>(
                           value: _param.year,
@@ -81,7 +74,7 @@ class ParamsFormState extends State<ParamsForm> {
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
-                              child: Text(value),
+                              child: Text(value,style: Theme.of(context).textTheme.display2),
                             );
                           }).toList(),
 
@@ -90,6 +83,7 @@ class ParamsFormState extends State<ParamsForm> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RadioButtonGroup(
+                                labelStyle: Theme.of(context).textTheme.display2,
                                 picked: _param.zone,
                                 orientation: GroupedButtonsOrientation.VERTICAL,
                                 margin: const EdgeInsets.only(left: 20.0),

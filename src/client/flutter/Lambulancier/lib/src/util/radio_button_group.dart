@@ -57,7 +57,7 @@ class RadioButtonGroup extends StatefulWidget {
     this.disabled,
     this.onChange,
     this.onSelected,
-    this.labelStyle = const TextStyle(),
+    this.labelStyle,
     this.activeColor, //defaults to toggleableActiveColor,
     this.orientation = GroupedButtonsOrientation.VERTICAL,
     this.itemBuilder,
