@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'facturation-ambulance-form.dart';
 import 'facturation-taxi-form.dart';
 import 'facturation-vsl-form.dart';
-import '../app.dart';
+import 'forms-animation.dart';
 
 const Color _colorOne = Color(0x33000000);
 const Color _colorTwo = Color(0x24000000);
@@ -24,7 +24,7 @@ class _FacturationState extends State<Facturation> {
 
   final Map<int, Widget> icons = <int, Widget>{
     0: Center(
-      child: FacturationAmbulanceForm(),
+      child: FormsAnimation(frontWidget: FacturationAmbulanceForm(), backWidget: FacturationTaxiForm()),
     ),
     1: Center(
       child: FacturationVSLForm(),
