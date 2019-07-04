@@ -233,7 +233,7 @@ class VSLFormState extends State<VSLForm> {
                                   //container
                                 ],
                               )),
-                              Icon(Icons.search),
+                              Icon(Icons.search,color: Colors.black),
                             ],
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),

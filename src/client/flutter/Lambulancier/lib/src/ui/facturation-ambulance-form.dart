@@ -102,7 +102,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Checkbox(
-
                                   value: _ambulance.gardeCentre15,
                                   onChanged: (bool value) {
                                     setState(() {
@@ -117,7 +116,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                             Row(
                               children: <Widget>[
                                 Checkbox(
-                                  activeColor: Theme.of(context).primaryColor,
                                   value: _ambulance.allerRetour,
                                   onChanged: (bool value) {
                                     setState(() {
@@ -300,7 +298,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                   //container
                                 ],
                               )),
-                              Icon(Icons.search),
+                              Icon(Icons.search,color: Colors.black),
                             ],
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),

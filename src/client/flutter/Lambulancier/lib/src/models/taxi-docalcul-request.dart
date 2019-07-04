@@ -1,11 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'taxi-docalcul-request.g.dart';
-/**
- * Object mapping JSON (API v1.0)
- * @see  http://liburgence.aidesnsoft.fr/swagger/ui/index
- * http://liburgence.aidesnsoft.fr/DoCalcul (API REST/JSON en POST)
- */
+
+/// Object mapping JSON (API v1.0)
+/// @see  http://liburgence.aidesnsoft.fr/swagger/ui/index
+/// http://liburgence.aidesnsoft.fr/DoCalcul (API REST/JSON en POST)
 
 @JsonSerializable()
 class BaseResponse extends Object {

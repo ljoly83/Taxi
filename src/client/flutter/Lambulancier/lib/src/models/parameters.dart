@@ -1,6 +1,6 @@
-/**
- * Model class for parameters-form.dart
- */
+///
+/// Model class for parameters-form.dart
+///
 class Parameters {
 
   List<String> yearList = <String>['2015', '2013', '2012'];

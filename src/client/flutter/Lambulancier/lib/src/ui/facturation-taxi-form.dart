@@ -75,10 +75,10 @@ class TaxiFormState extends State<TaxiForm> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   print('Snapshot has data');
-                  return Text("Success !!!", style: Theme.of(context).textTheme.display1);
+                  return Text("Success !!!", style: Theme.of(context).textTheme.display2);
                 } else if (snapshot.hasError) {
                   print('Snapshot has error');
-                  return Text("${snapshot.error}", style: Theme.of(context).textTheme.display1);
+                  return Text("${snapshot.error}", style: Theme.of(context).textTheme.display2);
                 }
                 // By default, show a loading spinner.
                 return Text("");
