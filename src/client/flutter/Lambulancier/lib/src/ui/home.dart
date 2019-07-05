@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      'Solutions pour Transporteur Sanitaires:',
+                      'Solutions pour Transporteurs Sanitaires:',
                       style: Theme.of(context).textTheme.display1,
                     ),
                     Text(
