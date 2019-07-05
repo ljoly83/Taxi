@@ -88,7 +88,6 @@ class Parameters {
   }
 
   // Create and return List<String> relevant to selected year
-  // Create and return List<String> relevant to selected year
   get zoneList {
     _zoneListMapLabels.forEach((k, v) {
       print('year :$_year clé:$k. List: $v');

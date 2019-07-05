@@ -23,7 +23,7 @@ class User {
   _launchURL() async {
     String destMail = REGISTRATION_RECEVE_MAIL;
     String titreMail = 'Enregistrement de compte';
-    String contenuEmail = 'Merci de prendre en compte mon email afin \n';
+    String contenuEmail = 'Merci de prendre en compte mon email afin ';
     contenuEmail += 'de me faire parvenir les nouveautés et toutes informations concernant vos logiciels et services.\n\n';
     contenuEmail += 'Société: $societe \n';
     contenuEmail += 'Nom: $nom \n';
@@ -32,6 +32,9 @@ class User {
     contenuEmail += 'Département: $departement \n';
     contenuEmail += 'Nombre de vehicules: $nbVehicules \n';
     contenuEmail += 'Téléphone: $telephone \n';
+    contenuEmail += '\n';
+    contenuEmail += 'Cordialement';
+    contenuEmail += '\n$prenom $nom';
 
     var url = 'mailto:$destMail?subject=$titreMail&body=$contenuEmail';
     if (await canLaunch(url)) {
