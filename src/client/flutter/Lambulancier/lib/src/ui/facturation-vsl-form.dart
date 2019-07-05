@@ -238,16 +238,6 @@ class VSLFormState extends State<VSLForm> {
                               //container
                             ],
                           )),
-                          IconButton(
-                            color: Colors.black,
-                            icon: Icon(Icons.search),
-                            tooltip: 'Voir le détail',
-                            onPressed: () {
-                              setState(() {
-
-                              });
-                            },
-                          ),
                         ],
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       ),

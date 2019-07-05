@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ui/home.dart';
 import 'ui/register-form.dart';
 import 'ui/facturation.dart';
@@ -73,6 +74,8 @@ class _AppState extends State<App> {
                 fontSize: 11.0, fontFamily: 'Hind', color: Colors.black),
             display2: TextStyle(
                 fontSize: 14.0, fontFamily: 'Hind', color: Colors.black),
+            display3: TextStyle(
+                fontSize: 14.0, fontFamily: 'Hind', color: Color(0xff2F3360)),
           ),
         ),
         home: Scaffold(
@@ -90,7 +93,7 @@ class _AppState extends State<App> {
                 title: Text('Accueil'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.receipt),
+                icon: Icon(Icons.directions_bus),  //Other icon with Icon(FontAwesomeIcons.bus) (
                 title: Text('Simulateur'),
               ),
               BottomNavigationBarItem(
