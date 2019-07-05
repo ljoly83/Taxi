@@ -31,7 +31,6 @@ class AmbulanceFormState extends State<AmbulanceForm> {
   TextEditingController _RoController;
   TextEditingController _RcController;
 
-
   // Method called at each Frame enter
   @override
   void initState() {
@@ -64,7 +63,8 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                         Row(
                           children: <Widget>[
                             RadioButtonGroup(
-                                labelStyle: Theme.of(context).textTheme.display2,
+                                labelStyle:
+                                    Theme.of(context).textTheme.display2,
                                 picked: _ambulance.day,
                                 orientation:
                                     GroupedButtonsOrientation.HORIZONTAL,
@@ -109,7 +109,9 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Garde Centre 15", style: Theme.of(context).textTheme.display2),
+                                Text("Garde Centre 15",
+                                    style:
+                                        Theme.of(context).textTheme.display2),
                               ],
                             ),
                             // [Tuesday] checkbox
@@ -123,7 +125,9 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     });
                                   },
                                 ),
-                                Text("Aller/Retour", style: Theme.of(context).textTheme.display2),
+                                Text("Aller/Retour",
+                                    style:
+                                        Theme.of(context).textTheme.display2),
                               ],
                             ),
                           ],
@@ -156,7 +160,10 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
-                                        labelText: 'Kms', labelStyle: Theme.of(context).textTheme.display2),
+                                        labelText: 'Kms',
+                                        labelStyle: Theme.of(context)
+                                            .textTheme
+                                            .display2),
                                     onSubmitted: (val) => setState(
                                         () => _ambulance.kms = int.parse(val)),
                                   ),
@@ -178,7 +185,10 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
-                                        labelText: 'Péage', labelStyle: Theme.of(context).textTheme.display2),
+                                        labelText: 'Péage',
+                                        labelStyle: Theme.of(context)
+                                            .textTheme
+                                            .display2),
                                     onSubmitted: (val) => setState(() =>
                                         _ambulance.peage = int.parse(val)),
                                   ),
@@ -196,7 +206,9 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Suppléments',
-                                        labelStyle: Theme.of(context).textTheme.display2),
+                                        labelStyle: Theme.of(context)
+                                            .textTheme
+                                            .display2),
                                     onSubmitted: (val) => setState(() =>
                                         _ambulance.supplements =
                                             int.parse(val)),
@@ -221,7 +233,9 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RO (%)',
-                                        labelStyle: Theme.of(context).textTheme.display2),
+                                        labelStyle: Theme.of(context)
+                                            .textTheme
+                                            .display2),
                                     onChanged: (val) => setState(() {
                                           _param.setPartRo(val);
                                           _RcController =
@@ -247,7 +261,9 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         labelText: 'Part RC (%)',
-                                        labelStyle: Theme.of(context).textTheme.display2),
+                                        labelStyle: Theme.of(context)
+                                            .textTheme
+                                            .display2),
                                     onChanged: (val) => setState(() {
                                           _param.setPartRc(val);
                                           _RoController =
@@ -298,16 +314,7 @@ class AmbulanceFormState extends State<AmbulanceForm> {
                                   //container
                                 ],
                               )),
-                              IconButton(
-                                color: Colors.black,
-                                icon: Icon(Icons.search),
-                                tooltip: 'Voir le détail',
-                                onPressed: () {
-                                  setState(() {
-
-                                  });
-                                },
-                              )
+                              Text(""), // Just to align Total
                             ],
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           ),

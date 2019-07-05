@@ -14,6 +14,8 @@ class FormsAnimationState extends State<FormsAnimation>
   Animation<double> _frontScale;
   Animation<double> _backScale;
 
+  Widget _floatingActionButtonIcon;
+
   @override
   void initState() {
     super.initState();
@@ -32,6 +34,12 @@ class FormsAnimationState extends State<FormsAnimation>
       parent: _controller,
       curve: new Interval(0.5, 1.0, curve: Curves.easeOut),
     );
+  }
+
+  changeFloatingActionButtonIcon() {
+    _floatingActionButtonIcon = _controller.isCompleted
+        ? new Icon(Icons.zoom_in)
+        : new Icon(Icons.arrow_back_ios);
   }
 
   @override
@@ -73,26 +81,33 @@ class FormsAnimationState extends State<FormsAnimation>
               );
             },
           ),
-          Container(
-            height: 40.0,
-            width: 40.0,
-            child: FittedBox(
-              child: FloatingActionButton(
-                backgroundColor: Color(0xff2196f3),
-                child: _controller.isCompleted? new Icon(Icons.zoom_in) :  new Icon(Icons.swap_horiz),
-                onPressed: () {
-                  setState(() {
-                    if (_controller.isCompleted || _controller.velocity > 0) {
-                      _controller.reverse();
-
-                    }
-                    else
-                      _controller.forward();
-                  });
-                },
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: Container(
+              height: 40.0,
+              width: 40.0,
+              child: FittedBox(
+                child: FloatingActionButton(
+                  backgroundColor: Color(0xff2196f3),
+                  child: _floatingActionButtonIcon == null
+                      ? new Icon(Icons.zoom_in)
+                      : _floatingActionButtonIcon,
+                  onPressed: () {
+                    setState(() {
+                      if (_controller.isCompleted || _controller.velocity > 0) {
+                        changeFloatingActionButtonIcon();
+                        _controller.reverse();
+                      } else {
+                        changeFloatingActionButtonIcon();
+                        _controller.forward();
+                      }
+                    });
+                  },
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

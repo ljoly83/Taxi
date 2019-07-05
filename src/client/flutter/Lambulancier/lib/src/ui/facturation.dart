@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'facturation-ambulance-form.dart';
 import 'facturation-ambulance-result.dart';
 import 'facturation-taxi-form.dart';
+import 'facturation-taxi-result.dart';
 import 'facturation-vsl-form.dart';
+import 'facturation-vsl-result.dart';
 import 'forms-animation.dart';
 
 const Color _colorOne = Color(0x33000000);
@@ -28,9 +30,9 @@ class _FacturationState extends State<Facturation> {
       child: FormsAnimation(frontWidget: FacturationAmbulanceForm(), backWidget: FacturationAmbulanceResult()),
     ),
     1: Center(
-      child: FacturationVSLForm(),
+        child:  FormsAnimation(frontWidget: FacturationVSLForm(), backWidget: FacturationVSLResult()),
     ),
-    2: FacturationTaxiForm(),
+    2: FormsAnimation(frontWidget: FacturationTaxiForm(), backWidget: FacturationTaxiResult()),
   };
 
   int sharedValue = 0;
