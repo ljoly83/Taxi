@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-
 class FormsAnimation extends StatefulWidget {
-  FormsAnimation({Key key, this.frontWidget, this.backWidget}): super(key: key);
-  Widget frontWidget;
-  Widget backWidget;
+  FormsAnimation({Key key, this.frontWidget, this.backWidget})
+      : super(key: key);
+  final Widget frontWidget;
+  final Widget backWidget;
   FormsAnimationState createState() => new FormsAnimationState();
 }
 
-class FormsAnimationState extends State<FormsAnimation> with TickerProviderStateMixin {
-
+class FormsAnimationState extends State<FormsAnimation>
+    with TickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> _frontScale;
   Animation<double> _backScale;
@@ -44,50 +44,56 @@ class FormsAnimationState extends State<FormsAnimation> with TickerProviderState
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
 
-    return new Scaffold(
-      appBar: new AppBar(),
-      floatingActionButton: new FloatingActionButton(
-        child: new Icon(Icons.flip_to_back),
-        onPressed: () {
-          setState(() {
-            if (_controller.isCompleted || _controller.velocity > 0)
-              _controller.reverse();
-            else
-              _controller.forward();
-          });
-        },
-      ),
-      body: new Center(
-        child: new Stack(
-          children: <Widget>[
-            new AnimatedBuilder(
-              child: this.widget.frontWidget,
-              animation: _backScale,
-              builder: (BuildContext context, Widget child) {
-                final Matrix4 transform = new Matrix4.identity()
-                  ..scale(1.0, _backScale.value, 1.0);
-                return new Transform(
-                  transform: transform,
-                  alignment: FractionalOffset.center,
-                  child: child,
-                );
-              },
+    return new Center(
+      child: new Stack(
+        children: <Widget>[
+          new AnimatedBuilder(
+            child: this.widget.backWidget,
+            animation: _backScale,
+            builder: (BuildContext context, Widget child) {
+              final Matrix4 transform = new Matrix4.identity()
+                ..scale(1.0, _backScale.value, 1.0);
+              return new Transform(
+                transform: transform,
+                alignment: FractionalOffset.center,
+                child: child,
+              );
+            },
+          ),
+          new AnimatedBuilder(
+            child: this.widget.frontWidget,
+            animation: _frontScale,
+            builder: (BuildContext context, Widget child) {
+              final Matrix4 transform = new Matrix4.identity()
+                ..scale(1.0, _frontScale.value, 1.0);
+              return new Transform(
+                transform: transform,
+                alignment: FractionalOffset.center,
+                child: child,
+              );
+            },
+          ),
+          Container(
+            height: 40.0,
+            width: 40.0,
+            child: FittedBox(
+              child: FloatingActionButton(
+                backgroundColor: Color(0xff2196f3),
+                child: _controller.isCompleted? new Icon(Icons.zoom_in) :  new Icon(Icons.swap_horiz),
+                onPressed: () {
+                  setState(() {
+                    if (_controller.isCompleted || _controller.velocity > 0) {
+                      _controller.reverse();
+
+                    }
+                    else
+                      _controller.forward();
+                  });
+                },
+              ),
             ),
-            new AnimatedBuilder(
-              child: this.widget.backWidget,
-              animation: _frontScale,
-              builder: (BuildContext context, Widget child) {
-                final Matrix4 transform = new Matrix4.identity()
-                  ..scale(1.0, _frontScale.value, 1.0);
-                return new Transform(
-                  transform: transform,
-                  alignment: FractionalOffset.center,
-                  child: child,
-                );
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
